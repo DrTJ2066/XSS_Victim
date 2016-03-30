@@ -1,0 +1,9 @@
+﻿@model XSS_Victim.Models.PostCommentModel
+
+<div class="comment" >
+    <span style="float: left; margin-left: 10px;"><img style="width: 32px; width: 32px;" src="~/Content/imgs/av.png" /></span>
+    <span style="float: left; font: 9pt tahoma; margin-bottom: 0px; color: #333;">
+        <textarea placeholder="Comment..." cols="55" rows="1" style="font: 9pt tahoma;" aria-valuetext="@Model.CommentBody"></textarea>
+        <a class="uibutton" style="vertical-align: top;">Send</a>
+    </span>
+</div>

@@ -1,0 +1,19 @@
+﻿@model XSS_Victim.Models.PostModel
+
+<div class="item">
+    <div dir="ltr">
+        <span style="float: left; margin-right: 10px; margin-top: 8px; padding-bottom: 5px;"><img style="width: 32px; width: 32px;" src="~/Content/imgs/av.png" /></span>
+        <span style="float: left; font: 9pt tahoma; margin-bottom: 0px; margin-top: 8px;">
+            @Model.Author<br>
+            <span style="color: #999; font: 8pt tahoma; line-height: 22px;">@string.Format("{0:dddd dd, MMMM yyyy}", Model.PublishDateTime)</span>
+        </span>
+        <div class="clr"></div>
+        <hr style="color: #c00; background-color: #ccc; height: 1px; border: none; width: 470px;" />
+        <span style="font: 10pt tahoma; margin-right: 8px;">@Html.Raw(Model.PostContent)</span>
+    </div>
+    <div class="act">
+        <a class="share-post" href="#"></a>
+        <a class="comment-post" href="#"></a>
+        <a class="like-post" href="#"></a>
+    </div>
+</div>

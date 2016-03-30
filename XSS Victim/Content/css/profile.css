@@ -1,9 +1,3 @@
-/*
- TimeLine HTML CSS JQUERY | By @t 
- eMail p30search@gmail.com & tamirtavoosi@yahoo.com 
- Tell +989381585940
- Web http://tavousi.name
-*/
 body {
     background-color: #E7EBF2;
     font-family: tahoma;
@@ -24,6 +18,34 @@ header {
     background-color: #FFF;
     background-image: url(../imgs/header.jpg);
     background-repeat: no-repeat;
+}
+
+.like-post,
+.comment-post,
+.share-post {
+    background-repeat: no-repeat;
+    background-size: auto;
+    width: 25px;
+    height: 24px;
+    display: inline-block;
+    margin-right: 3px;
+}
+
+.like-post {
+    background-image: url(../imgs/like2.png);
+    background-position-y: -3px;
+}
+
+.comment-post {
+    background-image: url(../imgs/comment.png);
+    background-position-y: 1px;
+}
+
+.share-post {
+    background-image: url(../imgs/share.png);
+    width: 32px;
+    background-position-y: -3px;
+    margin-left: -3px
 }
 
 .birthday {
@@ -175,7 +197,7 @@ h1 {
 }
 
 .act {
-    direction: ltr;
+    direction: rtl;
     background-color: #EDEFF4;
     margin-top: 5px;
     margin-bottom: 0px;
@@ -197,11 +219,9 @@ h1 {
 .comment {
     direction: ltr;
     background-color: #EDEFF4;
-    margin-top: 5px;
-    margin-bottom: 0px;
     font: 8pt tahoma;
     height: 32px;
-    margin: 0px 3px 3px 3px;
+    margin: 0px 3px 6px 3px;
 }
 
     .comment:hover {

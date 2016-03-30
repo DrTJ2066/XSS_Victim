@@ -8,7 +8,12 @@ namespace XSS_Victim.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index() {
+        private XSS_Victim.Models.Repositories.PostsRepository repoPosts;
+
+        public ActionResult Index()
+        {
+            var posts = repoPosts.GetPosts();
+
             return View();
         }
 

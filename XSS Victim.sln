@@ -5,6 +5,10 @@ VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XSS_Victim", "XSS Victim\XSS_Victim.csproj", "{493192E7-8767-4D83-9A6F-A78AB32CA54A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XSS_Victim.DAL", "XSS_Victim.DAL\XSS_Victim.DAL.csproj", "{6C558EEE-30CA-436E-A72C-A6BCC22F54CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XSS_Victim.Models", "XSS_Victim.Models\XSS_Victim.Models.csproj", "{BCB51955-764B-402C-8A41-E315EDD4C715}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{493192E7-8767-4D83-9A6F-A78AB32CA54A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{493192E7-8767-4D83-9A6F-A78AB32CA54A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{493192E7-8767-4D83-9A6F-A78AB32CA54A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6C558EEE-30CA-436E-A72C-A6BCC22F54CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6C558EEE-30CA-436E-A72C-A6BCC22F54CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6C558EEE-30CA-436E-A72C-A6BCC22F54CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6C558EEE-30CA-436E-A72C-A6BCC22F54CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCB51955-764B-402C-8A41-E315EDD4C715}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCB51955-764B-402C-8A41-E315EDD4C715}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCB51955-764B-402C-8A41-E315EDD4C715}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCB51955-764B-402C-8A41-E315EDD4C715}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

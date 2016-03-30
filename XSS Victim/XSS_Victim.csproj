@@ -192,17 +192,24 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\PostCommentModel.cs" />
+    <Compile Include="Models\PostModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\SocialData.mdf" />
+    <Content Include="App_Data\SocialData_log.ldf">
+      <DependentUpon>SocialData.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\css\fb-buttons.css" />
     <Content Include="Content\css\profile.css" />
     <Content Include="Content\imgs\av.png" />
-    <Content Include="Content\imgs\avatar.png" />
+    <Content Include="Content\imgs\avatar.jpg" />
     <Content Include="Content\imgs\boy.png" />
+    <Content Include="Content\imgs\comment.png" />
     <Content Include="Content\imgs\comment_left.gif" />
+    <Content Include="Content\imgs\facebook_icons.png" />
     <Content Include="Content\imgs\fb-icons.png" />
-    <Content Include="Content\imgs\girl.png" />
     <Content Include="Content\imgs\globe.gif" />
     <Content Include="Content\imgs\header.jpg" />
     <Content Include="Content\imgs\heart.gif" />
@@ -210,12 +217,14 @@
     <Content Include="Content\imgs\left.png" />
     <Content Include="Content\imgs\leftright.png" />
     <Content Include="Content\imgs\like.png" />
+    <Content Include="Content\imgs\like2.png" />
     <Content Include="Content\imgs\oline.png" />
     <Content Include="Content\imgs\post\1.jpg" />
     <Content Include="Content\imgs\post\2.jpg" />
     <Content Include="Content\imgs\post\3.jpg" />
     <Content Include="Content\imgs\post\4.jpg" />
     <Content Include="Content\imgs\right.png" />
+    <Content Include="Content\imgs\share.png" />
     <Content Include="Content\imgs\timeline.png" />
     <Content Include="Content\js\jquery.masonry.min.js" />
     <Content Include="Content\js\jquery.min.js" />
@@ -261,13 +270,22 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Web.config" />
-    <Content Include="Views\Shared\_Layout - Copy.cshtml" />
+    <Content Include="Views\Shared\NewCommentPartialView.cshtml" />
+    <Content Include="Views\Shared\PostItemPartialView.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\XSS_Victim.DAL\XSS_Victim.DAL.csproj">
+      <Project>{6c558eee-30ca-436e-a72c-a6bcc22f54cf}</Project>
+      <Name>XSS_Victim.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\XSS_Victim.Models\XSS_Victim.Models.csproj">
+      <Project>{bcb51955-764b-402c-8a41-e315edd4c715}</Project>
+      <Name>XSS_Victim.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
