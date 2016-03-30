@@ -1,0 +1,113 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>@ViewBag.Title - XSS Host Page</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+
+    <link href="~/Content/css/profile.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Content/css/fb-buttons.css">
+    <script src="~/Content/js/jquery.min.js"></script>
+    <script src="~/Content/js/jquery.masonry.min.js"></script>
+    <script>
+        $(function () {
+
+            function Arrow_Points() {
+                var s = $('#container').find('.item');
+                $.each(s, function (i, obj) {
+                    var posLeft = $(obj).css("left");
+                    $(obj).addClass('borderclass');
+                    if (posLeft == "0px") {
+                        html = "<span class='rightCorner'></span>";
+                        $(obj).prepend(html);
+                    }
+                    else {
+                        html = "<span class='leftCorner'></span>";
+                        $(obj).prepend(html);
+                    }
+                });
+            }
+            // Divs
+            $('#container').masonry({ itemSelector: '.item', });
+            Arrow_Points();
+
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <div class="msg">
+            <div style="padding-top:10px; margin-bottom: 10px;">
+                <a class="uibutton icon add" href="#button" style="width:120px;">Register</a>
+                <a class="uibutton icon add" href="#button" style="width:120px;">Sign-in</a>
+            </div>
+        </div>
+        <!-- پایان کد باکس دعوت به عضویت و ورود -->
+
+        <div style="clear:both;"></div>
+
+        <!-- شروع کد نمایش آواتار -->
+        <img class="avatar" src="~/Content/imgs/avatar.jpg" />
+        <!-- پایان کد نمایش آواتار -->
+        <!-- شروع کد نمایش اطلاعات کاربر -->
+        <div style="width:300px;direction:ltr;margin-right:5px;float:left;margin-top:260px;font:9pt tahoma;line-height:20px;">
+            <img src="~/Content/imgs/oline.png" /> Name : Mohammad Taghi Jahed<br>
+            <img src="~/Content/imgs/oline.png" /> Location : Bogota, Colombia<br>
+            <img src="~/Content/imgs/oline.png" /> Phone : 3044337163 <br>
+            <img src="~/Content/imgs/oline.png" /> EMail : mohammad.taghi@processa.com
+        </div>
+        <!-- پایان کد نمایش اطلاعات کاربر -->
+        <!-- شروع کد دکمه های پروفایل -->
+        <div style="width:320px;direction:ltr;margin-left:5px;float:right;margin-top:260px;font:9pt tahoma;">
+            <a class="uibutton icon add" href="#button" style="width:75px;">Follow me</a>
+            <a class="uibutton icon edit" href="#button" style="width:75px;">Add Friend</a>
+            <a class="uibutton icon edit" href="#button" style="width:95px;">Send Message</a>
+        </div>
+        <!-- پایان کد دکمه های پروفایل -->
+    </header>
+
+    <div id="container">
+        <!-- کدهای مربوط به خط تایم لاین -->
+        <div class="timeline_container">
+            <div class="timeline">
+            </div>
+        </div>
+        <!-- کدهای مربوط به خط تایم لاین -->
+        @RenderBody()
+    </div>
+    </div>
+
+    <!-- شروع کد باکس تولد -->
+    <div class="birthday" style="padding-top:15px;padding-bottom:15px;font:9pt tahoma; color:#666;" dir="ltr" align="center">
+        <img src="~/Content/imgs/boy.png" /><br>
+        امیرحسین در تاریخ 1 فروردین سال 1375 متولد شده است.
+    </div>
+    <!-- پایان کد باکس تولد -->
+    </div>
+
+    <!-- شروع کدهای فوتر -->
+    <hr style="color:#c00;background-color:#ccc;height:1px;border:none; width:999px;" />
+    <div id="subfooter" style="width:980px; margin:0 auto;font:8pt tahoma;">
+        <div id="sfleft" style="font:8pt tahoma; margin-top:4px;">
+            شبکه اجتماعی کیان آی تی
+            &middot;
+            <a style="font:8pt tahoma;" href="">تماس</a>
+        </div>
+        <div id="sfleft" style="font:8pt tahoma;line-height:22px;">
+            <a style="font:8pt tahoma;" href="">شرایط استفاده</a>  &middot;
+            <a style="font:8pt tahoma;" href="">حریم خصوصی</a>  &middot;
+            <a style="font:8pt tahoma;" href="">ایده و توسعه</a>  &middot;
+            <a style="font:8pt tahoma;" href="">راهنما</a>  &middot;
+            <a style="font:8pt tahoma;" href="">پالس</a>  &middot;
+            <a style="font:8pt tahoma;" href="">واسط برنامه نویسی</a>  &middot;
+            <a style="font:8pt tahoma;" href="">تبلیغات</a>
+            <br />
+            طراحی شده توسط سید امیرحسین طاووسی | ایمیل : P30search@Gmail.Com | شماره پیامک : 10005899312639<br>
+            سازگار با: Firefox 3+ ، Chrome و +Opera 12
+        </div>
+    </div>
+    <!-- پایان کدهای فوتر -->
+
+</body>
+</html>

@@ -1,0 +1,283 @@
+/*
+ TimeLine HTML CSS JQUERY | By @t 
+ eMail p30search@gmail.com & tamirtavoosi@yahoo.com 
+ Tell +989381585940
+ Web http://tavousi.name
+*/
+body {
+    background-color: #E7EBF2;
+    font-family: tahoma;
+    font-size: 9px;
+}
+
+div {
+    margin-bottom: 0px;
+}
+
+header {
+    margin: 0 auto;
+    width: 999px;
+    height: 460px;
+    border: 1px solid #c3ccdf;
+    border-bottom: 3px solid #c3ccdf;
+    border-radius: 2px;
+    background-color: #FFF;
+    background-image: url(../imgs/header.jpg);
+    background-repeat: no-repeat;
+}
+
+.birthday {
+    margin: 0 auto;
+    width: 999px;
+    border: 1px solid #c3ccdf;
+    border-radius: 3px;
+    background-color: #FFF;
+}
+
+#container, #containertop {
+    width: 1020px;
+    margin: 0 auto;
+}
+
+.borderclass {
+    border: 1px solid #A9B6D2;
+}
+
+.item {
+    border-radius: 4px;
+    width: 488px;
+    margin: 10px;
+    float: left;
+    margin-top: 10px;
+    background-color: #ffffff;
+    border: solid 1px #C4CDE0;
+}
+
+    .item img:hover {
+        opacity: 0.8;
+    }
+
+    .item:hover {
+        border: solid 1px #97A4C2;
+    }
+
+.topbox {
+    margin: 10px;
+    margin-top: 10px;
+    background-color: white;
+    border: solid 1px #B4BBCD;
+}
+
+    .item div, .topbox div {
+        padding: 8px;
+    }
+
+.rightCorner {
+    background-image: url(../imgs/right.png);
+    display: block;
+    height: 15px;
+    margin-left: 488px;
+    margin-top: 8px;
+    padding: 0;
+    vertical-align: top;
+    width: 13px;
+    z-index: 2;
+    position: absolute;
+}
+
+.leftCorner {
+    background-image: url(../imgs/left.png);
+    display: block;
+    height: 15px;
+    width: 13px;
+    margin-left: -13px;
+    margin-top: 8px;
+    position: absolute;
+    z-index: 2;
+}
+
+#box {
+    padding: 8px;
+}
+
+#update {
+    width: 100%;
+}
+
+.timeline_container {
+    width: 16px;
+    text-align: center;
+    margin: 0 auto;
+    display: block;
+}
+
+.timeline {
+    margin: 0 auto;
+    background-color: #C3CCDF;
+    display: block;
+    float: left;
+    height: 100%;
+    right: 508px;
+    position: absolute;
+    width: 4px;
+}
+
+    .timeline:hover {
+    }
+
+    .timeline div.plus {
+        width: 14px;
+        height: 14px;
+        position: relative;
+        left: -6px;
+    }
+
+.shade {
+    box-shadow: 0px 0px 18px #000;
+    -moz-box-shadow: 0px 0px 18px #000;
+    -webkit-box-shadow: 0px 0px 18px #000;
+}
+
+h1 {
+    font-family: 'Georgia',Times New Roman;
+}
+
+.deletebox {
+    font-weight: bold;
+    float: left;
+    text-decoration: none;
+    margin: 8px 10px 8px 10px;
+    color: #cc0000;
+}
+
+.avatar {
+    width: 170px;
+    height: 170px;
+    background: #E3E3E3;
+    float: left;
+    margin-top: 175px;
+    margin-left: 25px;
+    border: 1px solid #e5e5e5;
+    padding: 5px;
+    border-radius: 6px;
+}
+
+.msg {
+    padding: 10px 10px 10px 10px;
+    background: #344244;
+    float: left;
+    margin-top: 25px;
+    margin-left: 25px;
+    opacity: 0.4;
+    color: #FFF;
+    font: 8pt tahoma;
+    direction: ltr;
+}
+
+.act {
+    direction: ltr;
+    background-color: #EDEFF4;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    height: 13px;
+    font: 8pt tahoma;
+    margin: 0px 3px 3px 3px;
+}
+
+.act1 {
+    direction: ltr;
+    background-color: #EDEFF4;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    height: 13px;
+    font: 8pt tahoma;
+    margin: 0px 3px 3px 3px;
+}
+
+.comment {
+    direction: ltr;
+    background-color: #EDEFF4;
+    margin-top: 5px;
+    margin-bottom: 0px;
+    font: 8pt tahoma;
+    height: 32px;
+    margin: 0px 3px 3px 3px;
+}
+
+    .comment:hover {
+        opacity: 0.8;
+    }
+
+.boxp {
+    height: 94px;
+    width: 135px;
+    background-color: #CCC;
+    border-radius: 3px;
+    float: right;
+    margin-left: 15px;
+    margin-right: 5px;
+    background: #eee;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    padding: 5px;
+    border: 1px #ccc solid;
+}
+
+.date {
+    position: fixed;
+    margin-right: 1080px;
+    margin-top: 20px;
+    float: left;
+}
+
+    .date:hover {
+        text-decoration: underline;
+    }
+
+.a {
+    text-decoration: none;
+}
+
+.datebox {
+    width: 5px;
+    height: 22px;
+    background: #c8d0e0;
+    float: left;
+}
+
+    .datebox:hover {
+        background: #a5b2cf;
+    }
+/*************************/
+#subfooter {
+    padding-top: 2px;
+    color: #666;
+    font-size: 11px;
+    direction: ltr;
+    text-align: right;
+}
+
+    #subfooter a {
+        text-decoration: none;
+        color: #666;
+    }
+
+        #subfooter a:hover {
+            color: #222;
+        }
+
+#sfleft {
+    float: left;
+}
+
+#sfright {
+    float: right;
+}
+/***************/
+a {
+    text-decoration: none;
+}
+
+.clr {
+    margin-top: 28px;
+}
