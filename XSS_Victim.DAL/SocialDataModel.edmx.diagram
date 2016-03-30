@@ -5,8 +5,9 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="768a62ab1123494da9caf3d1e97c6c19" Name="Diagram1">
-        <EntityTypeShape EntityType="SocialDataModel.PostFragments" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="SocialDataModel.Posts" Width="1.5" PointX="3.875" PointY="0.875" />
+        <EntityTypeShape EntityType="SocialDataModel.PostContentFragments" Width="1.5" PointX="3" PointY="1.125" />
+        <EntityTypeShape EntityType="SocialDataModel.Posts" Width="1.5" PointX="0.75" PointY="1" />
+        <AssociationConnector Association="SocialDataModel.FK_PostContentFragments_Posts" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

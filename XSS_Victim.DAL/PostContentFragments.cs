@@ -12,11 +12,13 @@ namespace XSS_Victim.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class PostFragments
+    public partial class PostContentFragments
     {
         public int UserId { get; set; }
         public long PostId { get; set; }
         public int FragmentIndex { get; set; }
         public string PostContent { get; set; }
+    
+        public virtual Posts Posts { get; set; }
     }
 }

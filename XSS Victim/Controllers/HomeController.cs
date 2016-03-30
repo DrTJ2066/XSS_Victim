@@ -12,7 +12,7 @@ namespace XSS_Victim.Controllers
 
         public ActionResult Index()
         {
-            var posts = repoPosts.GetPosts();
+            ViewBag.PostItems = repoPosts.GetPosts();
 
             return View();
         }

@@ -66,8 +66,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="PostFragments.cs">
+    <Compile Include="PostContentFragments.cs">
       <DependentUpon>SocialDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Posts.cs">
@@ -89,15 +88,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>SocialDataModel.edmx</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="SocialData.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="SocialData_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <DependentUpon>SocialData.mdf</DependentUpon>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="SocialDataModel.edmx">

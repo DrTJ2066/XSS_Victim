@@ -20,12 +20,20 @@ namespace XSS_Victim.Models.Repositories
     /// <summary>
     /// Representa la información del objeto PostsRepository.
     /// </summary>
-    public class PostsRepository
+    public class PostsRepository : RepositoryBase
     {
 
-        public List<DAL> GetPosts()
+        public List<DAL.Posts> GetPosts(int count = 0)
         {
-            throw new NotImplementedException();
+            if (count == 0)
+            {
+                return this.Context.Posts.ToList();
+            }
+
+            var itemsCount = this.Context.Posts.Count();
+            count = itemsCount >= count ? count : itemsCount;
+
+            return this.Context.Posts.Take(count).ToList();
         }
     }
 }

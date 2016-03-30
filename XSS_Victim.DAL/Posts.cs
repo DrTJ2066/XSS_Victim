@@ -14,11 +14,20 @@ namespace XSS_Victim.DAL
     
     public partial class Posts
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Posts()
+        {
+            this.PostContentFragments = new HashSet<PostContentFragments>();
+        }
+    
         public int UserId { get; set; }
         public long PostId { get; set; }
         public System.DateTime PublishDateTime { get; set; }
         public bool IsPublished { get; set; }
         public string PostContent { get; set; }
         public bool HasFragments { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PostContentFragments> PostContentFragments { get; set; }
     }
 }

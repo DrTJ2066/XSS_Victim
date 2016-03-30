@@ -25,7 +25,7 @@ namespace XSS_Victim.DAL
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<PostFragments> PostFragments { get; set; }
+        public virtual DbSet<PostContentFragments> PostContentFragments { get; set; }
         public virtual DbSet<Posts> Posts { get; set; }
     }
 }

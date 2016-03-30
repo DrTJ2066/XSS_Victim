@@ -4,8 +4,8 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="SocialDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="PostFragments">
+    <Schema Namespace="SocialDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="PostContentFragments">
           <Key>
             <PropertyRef Name="UserId" />
             <PropertyRef Name="PostId" />
@@ -25,22 +25,46 @@
           <Property Name="PostId" Type="bigint" Nullable="false" />
           <Property Name="PublishDateTime" Type="datetime" Nullable="false" />
           <Property Name="IsPublished" Type="bit" Nullable="false" />
-          <Property Name="PostContent" Type="nvarchar(max)" />
+          <Property Name="PostContent" Type="nvarchar(max)" Nullable="false" />
           <Property Name="HasFragments" Type="bit" Nullable="false" />
         </EntityType>
+        <Association Name="FK_PostContentFragments_Posts">
+          <End Role="Posts" Type="Self.Posts" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PostContentFragments" Type="Self.PostContentFragments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posts">
+              <PropertyRef Name="UserId" />
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="PostContentFragments">
+              <PropertyRef Name="UserId" />
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="SocialDataModelStoreContainer">
-          <EntitySet Name="PostFragments" EntityType="Self.PostFragments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PostContentFragments" EntityType="Self.PostContentFragments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Posts" EntityType="Self.Posts" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_PostContentFragments_Posts" Association="Self.FK_PostContentFragments_Posts">
+            <End Role="Posts" EntitySet="Posts" />
+            <End Role="PostContentFragments" EntitySet="PostContentFragments" />
+          </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SocialDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="SocialDataEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="PostFragments" EntityType="SocialDataModel.PostFragments" />
+          <EntitySet Name="PostContentFragments" EntityType="SocialDataModel.PostContentFragments" />
           <EntitySet Name="Posts" EntityType="SocialDataModel.Posts" />
+          <AssociationSet Name="FK_PostContentFragments_Posts" Association="SocialDataModel.FK_PostContentFragments_Posts">
+            <End Role="Posts" EntitySet="Posts" />
+            <End Role="PostContentFragments" EntitySet="PostContentFragments" />
+          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="PostFragments">
+        <EntityType Name="PostContentFragments">
           <Key>
             <PropertyRef Name="UserId" />
             <PropertyRef Name="PostId" />
@@ -50,6 +74,7 @@
           <Property Name="PostId" Type="Int64" Nullable="false" />
           <Property Name="FragmentIndex" Type="Int32" Nullable="false" />
           <Property Name="PostContent" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Posts" Relationship="SocialDataModel.FK_PostContentFragments_Posts" FromRole="PostContentFragments" ToRole="Posts" />
         </EntityType>
         <EntityType Name="Posts">
           <Key>
@@ -60,18 +85,35 @@
           <Property Name="PostId" Type="Int64" Nullable="false" />
           <Property Name="PublishDateTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IsPublished" Type="Boolean" Nullable="false" />
-          <Property Name="PostContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PostContent" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="HasFragments" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="PostContentFragments" Relationship="SocialDataModel.FK_PostContentFragments_Posts" FromRole="Posts" ToRole="PostContentFragments" />
         </EntityType>
-      </Schema>
+        <Association Name="FK_PostContentFragments_Posts">
+          <End Type="SocialDataModel.Posts" Role="Posts" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="SocialDataModel.PostContentFragments" Role="PostContentFragments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posts">
+              <PropertyRef Name="UserId" />
+              <PropertyRef Name="PostId" />
+            </Principal>
+            <Dependent Role="PostContentFragments">
+              <PropertyRef Name="UserId" />
+              <PropertyRef Name="PostId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="SocialDataModelStoreContainer" CdmEntityContainer="SocialDataEntities">
-          <EntitySetMapping Name="PostFragments">
-            <EntityTypeMapping TypeName="SocialDataModel.PostFragments">
-              <MappingFragment StoreEntitySet="PostFragments">
+          <EntitySetMapping Name="PostContentFragments">
+            <EntityTypeMapping TypeName="SocialDataModel.PostContentFragments">
+              <MappingFragment StoreEntitySet="PostContentFragments">
                 <ScalarProperty Name="PostContent" ColumnName="PostContent" />
                 <ScalarProperty Name="FragmentIndex" ColumnName="FragmentIndex" />
                 <ScalarProperty Name="PostId" ColumnName="PostId" />
