@@ -9,7 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XSS_Victim.DAL", "XSS_Victi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XSS_Victim.Models", "XSS_Victim.Models\XSS_Victim.Models.csproj", "{BCB51955-764B-402C-8A41-E315EDD4C715}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyaMVC_EN", "..\__Libraries\RoyaMVC_EN\RoyaMVC_EN\RoyaMVC_EN.csproj", "{666BB016-604E-42AB-96D0-87907CDEC8E6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoyaMVC_EN", "RoyaMVC_EN\RoyaMVC_EN\RoyaMVC_EN.csproj", "{666BB016-604E-42AB-96D0-87907CDEC8E6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

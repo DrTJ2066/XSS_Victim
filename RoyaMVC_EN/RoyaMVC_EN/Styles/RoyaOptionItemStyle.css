@@ -1,0 +1,46 @@
+﻿.OptionItem
+{
+    margin: 10px 10px 5px 10px;
+    /*padding-top: 5px;*/
+    display: inline-block;
+    width: 165px;
+    overflow: visible;
+    position: relative;
+    vertical-align: bottom;
+}
+
+.OptionItem img
+{
+    margin-top: 10px;
+    width: 128px;
+    height: 128px;
+}
+
+.OptionItem         a:hover { border: thin dotted rgba(255, 204, 0, 0.6); background-color: rgba(255, 255, 204, 0.6); margin: 0px; }
+.OptionItem_Orange  a:hover { border: thin dotted rgba(255, 204, 0, 0.6); background-color: rgba(255, 255, 204, 0.6); margin: 0px; }
+.OptionItem_Blue    a:hover { border: thin dotted rgba(0, 0, 255, 0.6); background-color: rgba(198, 198, 255, 0.6); margin: 0px; }
+
+
+.OptionItem a
+{
+    text-decoration: none;
+    color: #000080;
+    cursor: pointer;
+    text-align: center;
+    font-family: tahoma;
+    font-size: small;
+    display: block;
+    width: 100%;
+    padding: 0px 0px 5px 0px !important;
+    margin: 1px;
+}
+
+.OptionItem a div div,
+.OptionText
+{
+     text-align: center;
+     margin: 6px 5px;
+     text-shadow: 2px 2px 5px #FFFFFF;
+     filter: dropshadow(color=#FFFFFF, offx=2, offy=2); 
+     font: normal normal normal 1em/1 Tahoma;
+}

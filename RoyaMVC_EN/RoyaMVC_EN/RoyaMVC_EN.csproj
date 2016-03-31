@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{666BB016-604E-42AB-96D0-87907CDEC8E6}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RoyaMVC_EN</RootNamespace>
+    <AssemblyName>RoyaMVC_EN</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>RoyaMVC_EN.pfx</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>.\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Administration, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Microsoft.Web.Administration.dll</HintPath>
+    </Reference>
+    <Reference Include="RoyaDateEngine">
+      <HintPath>..\..\_GAC\RoyaDateEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\PublicWebObjects\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountManagement\AccountModelsFile.cs" />
+    <Compile Include="AccountManagement\RoyaContactUsModel.cs" />
+    <Compile Include="AccountManagement\CurrentUser.cs" />
+    <Compile Include="AccountManagement\Extentions.cs" />
+    <Compile Include="Attributes\RoyaErrorHandler.cs" />
+    <Compile Include="CollectionHelper.cs" />
+    <Compile Include="Controllers\CustomControllerBase.cs" />
+    <Compile Include="DomainManager\PhysicalSubdomain.cs" />
+    <Compile Include="EMail\EmailProvider.cs" />
+    <Compile Include="Enumerators.cs" />
+    <Compile Include="Files.cs" />
+    <Compile Include="HelperClass.cs" />
+    <Compile Include="HTMLHelpers\RoyaHyperlinkTag.cs" />
+    <Compile Include="HTMLHelpers\RoyaOptionItemTag.cs" />
+    <Compile Include="HTMLHelpers\MVCHelpers.cs" />
+    <Compile Include="HTMLHelpers\RoyaComboBoxTag.cs" />
+    <Compile Include="HTMLHelpers\RoyaGridHeader.cs" />
+    <Compile Include="HTMLHelpers\RoyaHiddenTag.cs" />
+    <Compile Include="HTMLHelpers\RoyaImageTag.cs" />
+    <Compile Include="HTMLHelpers\RoyaLabelTag.cs" />
+    <Compile Include="HTMLHelpers\RoyaTextBoxTag.cs" />
+    <Compile Include="HTMLHelpers\RoyaPersianDatePicker.cs" />
+    <Compile Include="HTMLHelpers\RoyaRadioButtonTag.cs" />
+    <Compile Include="HTMLHelpers\RoyaCheckBox.cs" />
+    <Compile Include="HTMLHelpers\RoyaTagBase.cs" />
+    <Compile Include="KeyWith2Values.cs" />
+    <Compile Include="MIMEAssister.cs" />
+    <Compile Include="Models\AppMessage.cs" />
+    <Compile Include="Models\CommentItemViewModel.cs" />
+    <Compile Include="Models\CommentViewModel.cs" />
+    <Compile Include="Models\CompanyData.cs" />
+    <Compile Include="Models\DirectoryData.cs" />
+    <Compile Include="Models\ICompanyData.cs" />
+    <Compile Include="AccountManagement\UserModel.cs" />
+    <Compile Include="Models\PictureGalleryItem.cs" />
+    <Compile Include="Models\RoyaOptionNotification.cs" />
+    <Compile Include="Models\RoyaRatingModel.cs" />
+    <Compile Include="Models\RoyaRoutingModel.cs" />
+    <Compile Include="Models\SidePermanentLink.cs" />
+    <Compile Include="Models\Slider.cs" />
+    <Compile Include="Models\TagViewModel.cs" />
+    <Compile Include="Models\WebSiteSettingsData.cs" />
+    <Compile Include="Objects\LinkButtonViewModel.cs" />
+    <Compile Include="Objects\MVCObjectBaseViewModel.cs" />
+    <Compile Include="Objects\OptionItemViewModel.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Repositories\GeneralRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\IRoyaContext.cs" />
+    <Compile Include="Models\IEmployees.cs" />
+    <Compile Include="Models\NewsViewModel.cs" />
+    <Compile Include="Repositories\IRepositoryBase.cs" />
+    <Compile Include="Models\IWebsiteSettings.cs" />
+    <Compile Include="Repositories\RepositoryBase.cs" />
+    <Compile Include="Routing\DomainRoute.cs" />
+    <Compile Include="Routing\SubdomainRoute.cs" />
+    <Compile Include="ShellCommands.cs" />
+    <Compile Include="SystemSpecifications.cs" />
+    <Compile Include="VisitorsCounterViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\RoyaSecurity\RoyaSecurity.csproj">
+      <Project>{4F358658-C008-40F9-88A3-691F91F5B945}</Project>
+      <Name>RoyaSecurity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HumanNoPhotoIcon.png" />
+    <None Include="Resources\NoPhotoIcon.jpg" />
+    <Content Include="DomainManager\Index.htm" />
+    <Content Include="EMail\CreateAccountConfirmationEMail.html" />
+    <Content Include="EMail\PasswordResetEmail.html" />
+    <Content Include="Scripts\RoyaGeneralScripts.js" />
+    <Content Include="Styles\RoyaOptionItemStyle.css" />
+    <Content Include="Styles\RoyaPublicStyles.css" />
+    <Content Include="Styles\RoyaToolTip.css" />
+    <None Include="RoyaMVC_EN.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /Q /Y "$(TargetPath)" "D:\__Work\__Libraries\_GAC"</PostBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
