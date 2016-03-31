@@ -198,6 +198,14 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\DatabaseScript.sql" />
+    <Content Include="App_Data\SocialData.mdf" />
+    <Content Include="App_Data\SocialData_log.ldf">
+      <DependentUpon>SocialData.mdf</DependentUpon>
+    </Content>
+    <Content Include="App_Data\SocialNetworkData.mdf" />
+    <Content Include="App_Data\SocialNetworkData_log.ldf">
+      <DependentUpon>SocialNetworkData.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\css\fb-buttons.css" />
     <Content Include="Content\css\profile.css" />
     <Content Include="Content\imgs\av.png" />
