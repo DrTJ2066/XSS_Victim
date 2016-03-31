@@ -12,13 +12,16 @@ namespace XSS_Victim.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class PostContentFragments
+    public partial class MediaAlbums
     {
-        public int UserID { get; set; }
-        public long PostID { get; set; }
-        public int FragmentIndex { get; set; }
-        public string PostContent { get; set; }
+        public MediaAlbums()
+        {
+            this.MediaGallery = new HashSet<MediaGallery>();
+        }
     
-        public virtual Posts Posts { get; set; }
+        public int IDAlbum { get; set; }
+        public string AlbumTitle { get; set; }
+    
+        public virtual ICollection<MediaGallery> MediaGallery { get; set; }
     }
 }

@@ -1,33 +1,272 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
   <!-- EF Runtime content -->
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="SocialDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="SocialDataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="Cities">
+          <Key>
+            <PropertyRef Name="CountryID" />
+            <PropertyRef Name="ProvinceID" />
+            <PropertyRef Name="IDCity" />
+          </Key>
+          <Property Name="CountryID" Type="bigint" Nullable="false" />
+          <Property Name="ProvinceID" Type="bigint" Nullable="false" />
+          <Property Name="IDCity" Type="bigint" Nullable="false" />
+          <Property Name="CityName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Latitude" Type="nvarchar" MaxLength="50" />
+          <Property Name="Longitude" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="CompanyInfo">
+          <Key>
+            <PropertyRef Name="IDWebsite" />
+          </Key>
+          <Property Name="IDWebsite" Type="bigint" Nullable="false" />
+          <Property Name="PositionName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ManagerName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhoneLine1" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhoneLine2" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhoneLine3" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CompanyAddress" Type="nvarchar" MaxLength="300" Nullable="false" />
+          <Property Name="ThumnailMapPath" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="GoogleMapScript" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ExtraMessage" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ContactUs">
+          <Key>
+            <PropertyRef Name="IDMessage" />
+          </Key>
+          <Property Name="IDMessage" Type="bigint" Nullable="false" />
+          <Property Name="MessageDateTime" Type="nvarchar" MaxLength="25" />
+          <Property Name="MessageDateTimeGregorian" Type="datetime" />
+          <Property Name="PersonFullName" Type="nvarchar" MaxLength="200" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="20" />
+          <Property Name="EMail" Type="nvarchar" MaxLength="100" />
+          <Property Name="WebSite" Type="nvarchar" MaxLength="100" />
+          <Property Name="MessageSubject" Type="nvarchar" MaxLength="100" />
+          <Property Name="MessageBody" Type="nvarchar" MaxLength="2000" />
+          <Property Name="IsRead" Type="bit" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="IDCountry" />
+          </Key>
+          <Property Name="IDCountry" Type="bigint" Nullable="false" />
+          <Property Name="CountryName" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MediaAlbums">
+          <Key>
+            <PropertyRef Name="IDAlbum" />
+          </Key>
+          <Property Name="IDAlbum" Type="int" Nullable="false" />
+          <Property Name="AlbumTitle" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MediaGallery">
+          <Key>
+            <PropertyRef Name="IDGalleryItem" />
+          </Key>
+          <Property Name="IDGalleryItem" Type="int" Nullable="false" />
+          <Property Name="AlbumID" Type="int" />
+          <Property Name="ItemTitle" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ThumbnailImagePath" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="ResourcePath" Type="nvarchar(max)" />
+          <Property Name="ItemDescription" Type="nvarchar" MaxLength="500" />
+          <Property Name="MediaTypeID" Type="int" Nullable="false" />
+          <Property Name="Published" Type="bit" Nullable="false" />
+          <Property Name="SortOrder" Type="int" Nullable="false" />
+          <Property Name="MediaTags" Type="nvarchar" MaxLength="300" />
+        </EntityType>
+        <EntityType Name="MediaTypes">
+          <Key>
+            <PropertyRef Name="IDMediaType" />
+          </Key>
+          <Property Name="IDMediaType" Type="int" Nullable="false" />
+          <Property Name="MediaTypeTitle" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ResourcesPrefix" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
         <EntityType Name="PostContentFragments">
           <Key>
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="PostId" />
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="PostID" />
             <PropertyRef Name="FragmentIndex" />
           </Key>
-          <Property Name="UserId" Type="int" Nullable="false" />
-          <Property Name="PostId" Type="bigint" Nullable="false" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="PostID" Type="bigint" Nullable="false" />
           <Property Name="FragmentIndex" Type="int" Nullable="false" />
           <Property Name="PostContent" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Posts">
           <Key>
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="PostId" />
+            <PropertyRef Name="IDUser" />
+            <PropertyRef Name="IDPost" />
           </Key>
-          <Property Name="UserId" Type="int" Nullable="false" />
-          <Property Name="PostId" Type="bigint" Nullable="false" />
+          <Property Name="IDUser" Type="int" Nullable="false" />
+          <Property Name="IDPost" Type="bigint" Nullable="false" />
           <Property Name="PublishDateTime" Type="datetime" Nullable="false" />
           <Property Name="IsPublished" Type="bit" Nullable="false" />
           <Property Name="PostContent" Type="nvarchar(max)" Nullable="false" />
           <Property Name="HasFragments" Type="bit" Nullable="false" />
         </EntityType>
+        <EntityType Name="Provinces">
+          <Key>
+            <PropertyRef Name="CountryID" />
+            <PropertyRef Name="IDProvince" />
+          </Key>
+          <Property Name="CountryID" Type="bigint" Nullable="false" />
+          <Property Name="IDProvince" Type="bigint" Nullable="false" />
+          <Property Name="ProvinceName" Type="nvarchar" MaxLength="200" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SitePageFragments">
+          <Key>
+            <PropertyRef Name="PageID" />
+            <PropertyRef Name="FragmentIndex" />
+          </Key>
+          <Property Name="PageID" Type="int" Nullable="false" />
+          <Property Name="FragmentIndex" Type="int" Nullable="false" />
+          <Property Name="PageContent" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SitePages">
+          <Key>
+            <PropertyRef Name="IDPage" />
+          </Key>
+          <Property Name="IDPage" Type="int" Nullable="false" />
+          <Property Name="PageInternalName" Type="nvarchar" MaxLength="50" />
+          <Property Name="PageTitle" Type="nvarchar" MaxLength="100" />
+          <Property Name="PageContent" Type="nvarchar(max)" />
+          <Property Name="HasFragments" Type="bit" />
+          <Property Name="Published" Type="bit" Nullable="false" />
+          <Property Name="IsMetaEditable" Type="bit" Nullable="false" />
+          <Property Name="IsScript" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SliderImages">
+          <Key>
+            <PropertyRef Name="SliderID" />
+            <PropertyRef Name="SlideIndex" />
+          </Key>
+          <Property Name="SliderID" Type="int" Nullable="false" />
+          <Property Name="SlideIndex" Type="int" Nullable="false" />
+          <Property Name="ThumbnailImagePath" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="ImagePath" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="SlideTitle" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="SlideDescription" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="Published" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Sliders">
+          <Key>
+            <PropertyRef Name="IDSlider" />
+          </Key>
+          <Property Name="IDSlider" Type="int" Nullable="false" />
+          <Property Name="InternalName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="SliderWith" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="SliderHeight" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="Published" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="IDUser" />
+          </Key>
+          <Property Name="IDUser" Type="int" Nullable="false" />
+          <Property Name="UserFullName" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EMail" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="RegisterationDateTime" Type="nvarchar" MaxLength="25" Nullable="false" />
+          <Property Name="RegisterationDateTimeGregorian" Type="datetime" Nullable="false" />
+          <Property Name="Telephone" Type="nvarchar" MaxLength="20" />
+          <Property Name="Mobile" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="500" />
+          <Property Name="WebAddress" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="AddressCountryID" Type="bigint" Nullable="false" />
+          <Property Name="AddressProvinceID" Type="bigint" Nullable="false" />
+          <Property Name="AddressCityID" Type="bigint" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="500" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="IsApproved" Type="bit" Nullable="false" />
+          <Property Name="IsEmployee" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_Membership">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="ConfirmationToken" Type="nvarchar" MaxLength="128" />
+          <Property Name="IsConfirmed" Type="bit" />
+          <Property Name="LastPasswordFailureDate" Type="datetime" />
+          <Property Name="PasswordFailuresSinceLastSuccess" Type="int" Nullable="false" />
+          <Property Name="Password" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="PasswordChangedDate" Type="datetime" />
+          <Property Name="PasswordSalt" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="PasswordVerificationToken" Type="nvarchar" MaxLength="128" />
+          <Property Name="PasswordVerificationTokenExpirationDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="webpages_Roles">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="webpages_UsersInRoles">
+          <Key>
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Cities_Provinces">
+          <End Role="Provinces" Type="Self.Provinces" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Cities" Type="Self.Cities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Provinces">
+              <PropertyRef Name="CountryID" />
+              <PropertyRef Name="IDProvince" />
+            </Principal>
+            <Dependent Role="Cities">
+              <PropertyRef Name="CountryID" />
+              <PropertyRef Name="ProvinceID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MediaGallery_MediaAlbums">
+          <End Role="MediaAlbums" Type="Self.MediaAlbums" Multiplicity="0..1" />
+          <End Role="MediaGallery" Type="Self.MediaGallery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MediaAlbums">
+              <PropertyRef Name="IDAlbum" />
+            </Principal>
+            <Dependent Role="MediaGallery">
+              <PropertyRef Name="AlbumID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MediaGallery_MediaTypes">
+          <End Role="MediaTypes" Type="Self.MediaTypes" Multiplicity="1" />
+          <End Role="MediaGallery" Type="Self.MediaGallery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MediaTypes">
+              <PropertyRef Name="IDMediaType" />
+            </Principal>
+            <Dependent Role="MediaGallery">
+              <PropertyRef Name="MediaTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PostContentFragments_Posts">
           <End Role="Posts" Type="Self.Posts" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -35,110 +274,853 @@
           <End Role="PostContentFragments" Type="Self.PostContentFragments" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Posts">
-              <PropertyRef Name="UserId" />
-              <PropertyRef Name="PostId" />
+              <PropertyRef Name="IDUser" />
+              <PropertyRef Name="IDPost" />
             </Principal>
             <Dependent Role="PostContentFragments">
-              <PropertyRef Name="UserId" />
-              <PropertyRef Name="PostId" />
+              <PropertyRef Name="UserID" />
+              <PropertyRef Name="PostID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Provinces_Countries">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Provinces" Type="Self.Provinces" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="IDCountry" />
+            </Principal>
+            <Dependent Role="Provinces">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SitePageFragments_SitePages">
+          <End Role="SitePages" Type="Self.SitePages" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SitePageFragments" Type="Self.SitePageFragments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SitePages">
+              <PropertyRef Name="IDPage" />
+            </Principal>
+            <Dependent Role="SitePageFragments">
+              <PropertyRef Name="PageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SliderImages_Sliders">
+          <End Role="Sliders" Type="Self.Sliders" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SliderImages" Type="Self.SliderImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sliders">
+              <PropertyRef Name="IDSlider" />
+            </Principal>
+            <Dependent Role="SliderImages">
+              <PropertyRef Name="SliderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Cities">
+          <End Role="Cities" Type="Self.Cities" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="CountryID" />
+              <PropertyRef Name="ProvinceID" />
+              <PropertyRef Name="IDCity" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="AddressCountryID" />
+              <PropertyRef Name="AddressProvinceID" />
+              <PropertyRef Name="AddressCityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_webpages_Membership_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="webpages_Membership" Type="Self.webpages_Membership" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="IDUser" />
+            </Principal>
+            <Dependent Role="webpages_Membership">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_webpages_UsersInRoles_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="webpages_UsersInRoles" Type="Self.webpages_UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="IDUser" />
+            </Principal>
+            <Dependent Role="webpages_UsersInRoles">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_webpages_UsersInRoles_webpages_Roles">
+          <End Role="webpages_Roles" Type="Self.webpages_Roles" Multiplicity="1" />
+          <End Role="webpages_UsersInRoles" Type="Self.webpages_UsersInRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="webpages_Roles">
+              <PropertyRef Name="RoleID" />
+            </Principal>
+            <Dependent Role="webpages_UsersInRoles">
+              <PropertyRef Name="RoleId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="SocialDataModelStoreContainer">
+          <EntitySet Name="Cities" EntityType="Self.Cities" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompanyInfo" EntityType="Self.CompanyInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ContactUs" EntityType="Self.ContactUs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MediaAlbums" EntityType="Self.MediaAlbums" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MediaGallery" EntityType="Self.MediaGallery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MediaTypes" EntityType="Self.MediaTypes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PostContentFragments" EntityType="Self.PostContentFragments" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Posts" EntityType="Self.Posts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Provinces" EntityType="Self.Provinces" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SitePageFragments" EntityType="Self.SitePageFragments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SitePages" EntityType="Self.SitePages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SliderImages" EntityType="Self.SliderImages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Sliders" EntityType="Self.Sliders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="webpages_Membership" EntityType="Self.webpages_Membership" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="webpages_Roles" EntityType="Self.webpages_Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="webpages_UsersInRoles" EntityType="Self.webpages_UsersInRoles" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Cities_Provinces" Association="Self.FK_Cities_Provinces">
+            <End Role="Provinces" EntitySet="Provinces" />
+            <End Role="Cities" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MediaGallery_MediaAlbums" Association="Self.FK_MediaGallery_MediaAlbums">
+            <End Role="MediaAlbums" EntitySet="MediaAlbums" />
+            <End Role="MediaGallery" EntitySet="MediaGallery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MediaGallery_MediaTypes" Association="Self.FK_MediaGallery_MediaTypes">
+            <End Role="MediaTypes" EntitySet="MediaTypes" />
+            <End Role="MediaGallery" EntitySet="MediaGallery" />
+          </AssociationSet>
           <AssociationSet Name="FK_PostContentFragments_Posts" Association="Self.FK_PostContentFragments_Posts">
             <End Role="Posts" EntitySet="Posts" />
             <End Role="PostContentFragments" EntitySet="PostContentFragments" />
           </AssociationSet>
-        </EntityContainer>
-      </Schema></edmx:StorageModels>
-    <!-- CSDL content -->
-    <edmx:ConceptualModels>
-      <Schema Namespace="SocialDataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="SocialDataEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="PostContentFragments" EntityType="SocialDataModel.PostContentFragments" />
-          <EntitySet Name="Posts" EntityType="SocialDataModel.Posts" />
-          <AssociationSet Name="FK_PostContentFragments_Posts" Association="SocialDataModel.FK_PostContentFragments_Posts">
-            <End Role="Posts" EntitySet="Posts" />
-            <End Role="PostContentFragments" EntitySet="PostContentFragments" />
+          <AssociationSet Name="FK_Provinces_Countries" Association="Self.FK_Provinces_Countries">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Provinces" EntitySet="Provinces" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SitePageFragments_SitePages" Association="Self.FK_SitePageFragments_SitePages">
+            <End Role="SitePages" EntitySet="SitePages" />
+            <End Role="SitePageFragments" EntitySet="SitePageFragments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SliderImages_Sliders" Association="Self.FK_SliderImages_Sliders">
+            <End Role="Sliders" EntitySet="Sliders" />
+            <End Role="SliderImages" EntitySet="SliderImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Cities" Association="Self.FK_Users_Cities">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_webpages_Membership_Users" Association="Self.FK_webpages_Membership_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="webpages_Membership" EntitySet="webpages_Membership" />
+          </AssociationSet>
+          <AssociationSet Name="FK_webpages_UsersInRoles_Users" Association="Self.FK_webpages_UsersInRoles_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_webpages_UsersInRoles_webpages_Roles" Association="Self.FK_webpages_UsersInRoles_webpages_Roles">
+            <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+            <End Role="webpages_UsersInRoles" EntitySet="webpages_UsersInRoles" />
           </AssociationSet>
         </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SocialDataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityType Name="Cities">
+          <Key>
+            <PropertyRef Name="CountryID" />
+            <PropertyRef Name="ProvinceID" />
+            <PropertyRef Name="IDCity" />
+          </Key>
+          <Property Name="CountryID" Type="Int64" Nullable="false" />
+          <Property Name="ProvinceID" Type="Int64" Nullable="false" />
+          <Property Name="IDCity" Type="Int64" Nullable="false" />
+          <Property Name="CityName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Provinces" Relationship="Self.FK_Cities_Provinces" FromRole="Cities" ToRole="Provinces" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Users_Cities" FromRole="Cities" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="CompanyInfo">
+          <Key>
+            <PropertyRef Name="IDWebsite" />
+          </Key>
+          <Property Name="IDWebsite" Type="Int64" Nullable="false" />
+          <Property Name="PositionName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompanyName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ManagerName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhoneLine1" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhoneLine2" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PhoneLine3" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CompanyAddress" Type="String" MaxLength="300" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ThumnailMapPath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="GoogleMapScript" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ExtraMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ContactUs">
+          <Key>
+            <PropertyRef Name="IDMessage" />
+          </Key>
+          <Property Name="IDMessage" Type="Int64" Nullable="false" />
+          <Property Name="MessageDateTime" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="MessageDateTimeGregorian" Type="DateTime" Precision="3" />
+          <Property Name="PersonFullName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="EMail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="WebSite" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MessageSubject" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MessageBody" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="IsRead" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="IDCountry" />
+          </Key>
+          <Property Name="IDCountry" Type="Int64" Nullable="false" />
+          <Property Name="CountryName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Provinces" Relationship="Self.FK_Provinces_Countries" FromRole="Countries" ToRole="Provinces" />
+        </EntityType>
+        <EntityType Name="MediaAlbums">
+          <Key>
+            <PropertyRef Name="IDAlbum" />
+          </Key>
+          <Property Name="IDAlbum" Type="Int32" Nullable="false" />
+          <Property Name="AlbumTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="MediaGallery" Relationship="Self.FK_MediaGallery_MediaAlbums" FromRole="MediaAlbums" ToRole="MediaGallery" />
+        </EntityType>
+        <EntityType Name="MediaGallery">
+          <Key>
+            <PropertyRef Name="IDGalleryItem" />
+          </Key>
+          <Property Name="IDGalleryItem" Type="Int32" Nullable="false" />
+          <Property Name="AlbumID" Type="Int32" />
+          <Property Name="ItemTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ThumbnailImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ResourcePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ItemDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MediaTypeID" Type="Int32" Nullable="false" />
+          <Property Name="Published" Type="Boolean" Nullable="false" />
+          <Property Name="SortOrder" Type="Int32" Nullable="false" />
+          <Property Name="MediaTags" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MediaAlbums" Relationship="Self.FK_MediaGallery_MediaAlbums" FromRole="MediaGallery" ToRole="MediaAlbums" />
+          <NavigationProperty Name="MediaTypes" Relationship="Self.FK_MediaGallery_MediaTypes" FromRole="MediaGallery" ToRole="MediaTypes" />
+        </EntityType>
+        <EntityType Name="MediaTypes">
+          <Key>
+            <PropertyRef Name="IDMediaType" />
+          </Key>
+          <Property Name="IDMediaType" Type="Int32" Nullable="false" />
+          <Property Name="MediaTypeTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ResourcesPrefix" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="MediaGallery" Relationship="Self.FK_MediaGallery_MediaTypes" FromRole="MediaTypes" ToRole="MediaGallery" />
+        </EntityType>
         <EntityType Name="PostContentFragments">
           <Key>
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="PostId" />
+            <PropertyRef Name="UserID" />
+            <PropertyRef Name="PostID" />
             <PropertyRef Name="FragmentIndex" />
           </Key>
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="PostId" Type="Int64" Nullable="false" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="PostID" Type="Int64" Nullable="false" />
           <Property Name="FragmentIndex" Type="Int32" Nullable="false" />
-          <Property Name="PostContent" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Posts" Relationship="SocialDataModel.FK_PostContentFragments_Posts" FromRole="PostContentFragments" ToRole="Posts" />
+          <Property Name="PostContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Posts" Relationship="Self.FK_PostContentFragments_Posts" FromRole="PostContentFragments" ToRole="Posts" />
         </EntityType>
         <EntityType Name="Posts">
           <Key>
-            <PropertyRef Name="UserId" />
-            <PropertyRef Name="PostId" />
+            <PropertyRef Name="IDUser" />
+            <PropertyRef Name="IDPost" />
           </Key>
-          <Property Name="UserId" Type="Int32" Nullable="false" />
-          <Property Name="PostId" Type="Int64" Nullable="false" />
+          <Property Name="IDUser" Type="Int32" Nullable="false" />
+          <Property Name="IDPost" Type="Int64" Nullable="false" />
           <Property Name="PublishDateTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IsPublished" Type="Boolean" Nullable="false" />
-          <Property Name="PostContent" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PostContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="HasFragments" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="PostContentFragments" Relationship="SocialDataModel.FK_PostContentFragments_Posts" FromRole="Posts" ToRole="PostContentFragments" />
+          <NavigationProperty Name="PostContentFragments" Relationship="Self.FK_PostContentFragments_Posts" FromRole="Posts" ToRole="PostContentFragments" />
         </EntityType>
-        <Association Name="FK_PostContentFragments_Posts">
-          <End Type="SocialDataModel.Posts" Role="Posts" Multiplicity="1">
+        <EntityType Name="Provinces">
+          <Key>
+            <PropertyRef Name="CountryID" />
+            <PropertyRef Name="IDProvince" />
+          </Key>
+          <Property Name="CountryID" Type="Int64" Nullable="false" />
+          <Property Name="IDProvince" Type="Int64" Nullable="false" />
+          <Property Name="ProvinceName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Cities" Relationship="Self.FK_Cities_Provinces" FromRole="Provinces" ToRole="Cities" />
+          <NavigationProperty Name="Countries" Relationship="Self.FK_Provinces_Countries" FromRole="Provinces" ToRole="Countries" />
+        </EntityType>
+        <EntityType Name="SitePageFragments">
+          <Key>
+            <PropertyRef Name="PageID" />
+            <PropertyRef Name="FragmentIndex" />
+          </Key>
+          <Property Name="PageID" Type="Int32" Nullable="false" />
+          <Property Name="FragmentIndex" Type="Int32" Nullable="false" />
+          <Property Name="PageContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SitePages" Relationship="Self.FK_SitePageFragments_SitePages" FromRole="SitePageFragments" ToRole="SitePages" />
+        </EntityType>
+        <EntityType Name="SitePages">
+          <Key>
+            <PropertyRef Name="IDPage" />
+          </Key>
+          <Property Name="IDPage" Type="Int32" Nullable="false" />
+          <Property Name="PageInternalName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PageTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="PageContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="HasFragments" Type="Boolean" />
+          <Property Name="Published" Type="Boolean" Nullable="false" />
+          <Property Name="IsMetaEditable" Type="Boolean" Nullable="false" />
+          <Property Name="IsScript" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="SitePageFragments" Relationship="Self.FK_SitePageFragments_SitePages" FromRole="SitePages" ToRole="SitePageFragments" />
+        </EntityType>
+        <EntityType Name="SliderImages">
+          <Key>
+            <PropertyRef Name="SliderID" />
+            <PropertyRef Name="SlideIndex" />
+          </Key>
+          <Property Name="SliderID" Type="Int32" Nullable="false" />
+          <Property Name="SlideIndex" Type="Int32" Nullable="false" />
+          <Property Name="ThumbnailImagePath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ImagePath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SlideTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SlideDescription" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Published" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Sliders" Relationship="Self.FK_SliderImages_Sliders" FromRole="SliderImages" ToRole="Sliders" />
+        </EntityType>
+        <EntityType Name="Sliders">
+          <Key>
+            <PropertyRef Name="IDSlider" />
+          </Key>
+          <Property Name="IDSlider" Type="Int32" Nullable="false" />
+          <Property Name="InternalName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SliderWith" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SliderHeight" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Published" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="SliderImages" Relationship="Self.FK_SliderImages_Sliders" FromRole="Sliders" ToRole="SliderImages" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="IDUser" />
+          </Key>
+          <Property Name="IDUser" Type="Int32" Nullable="false" />
+          <Property Name="UserFullName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EMail" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RegisterationDateTime" Type="String" MaxLength="25" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="RegisterationDateTimeGregorian" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Telephone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Mobile" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="WebAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AddressCountryID" Type="Int64" Nullable="false" />
+          <Property Name="AddressProvinceID" Type="Int64" Nullable="false" />
+          <Property Name="AddressCityID" Type="Int64" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IsApproved" Type="Boolean" Nullable="false" />
+          <Property Name="IsEmployee" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Cities" Relationship="Self.FK_Users_Cities" FromRole="Users" ToRole="Cities" />
+          <NavigationProperty Name="webpages_Membership" Relationship="Self.FK_webpages_Membership_Users" FromRole="Users" ToRole="webpages_Membership" />
+          <NavigationProperty Name="webpages_Roles" Relationship="Self.webpages_UsersInRoles" FromRole="Users" ToRole="webpages_Roles" />
+        </EntityType>
+        <EntityType Name="webpages_Membership">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="ConfirmationToken" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="IsConfirmed" Type="Boolean" />
+          <Property Name="LastPasswordFailureDate" Type="DateTime" Precision="3" />
+          <Property Name="PasswordFailuresSinceLastSuccess" Type="Int32" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordChangedDate" Type="DateTime" Precision="3" />
+          <Property Name="PasswordSalt" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PasswordVerificationToken" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="PasswordVerificationTokenExpirationDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_webpages_Membership_Users" FromRole="webpages_Membership" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="webpages_Roles">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" />
+          <Property Name="RoleName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Users" Relationship="Self.webpages_UsersInRoles" FromRole="webpages_Roles" ToRole="Users" />
+        </EntityType>
+        <Association Name="FK_Cities_Provinces">
+          <End Role="Provinces" Type="Self.Provinces" Multiplicity="1">
             <OnDelete Action="Cascade" />
           </End>
-          <End Type="SocialDataModel.PostContentFragments" Role="PostContentFragments" Multiplicity="*" />
+          <End Role="Cities" Type="Self.Cities" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="Posts">
-              <PropertyRef Name="UserId" />
-              <PropertyRef Name="PostId" />
+            <Principal Role="Provinces">
+              <PropertyRef Name="CountryID" />
+              <PropertyRef Name="IDProvince" />
             </Principal>
-            <Dependent Role="PostContentFragments">
-              <PropertyRef Name="UserId" />
-              <PropertyRef Name="PostId" />
+            <Dependent Role="Cities">
+              <PropertyRef Name="CountryID" />
+              <PropertyRef Name="ProvinceID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        </Schema>
+        <Association Name="FK_Users_Cities">
+          <End Role="Cities" Type="Self.Cities" Multiplicity="1" />
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cities">
+              <PropertyRef Name="CountryID" />
+              <PropertyRef Name="ProvinceID" />
+              <PropertyRef Name="IDCity" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="AddressCountryID" />
+              <PropertyRef Name="AddressProvinceID" />
+              <PropertyRef Name="AddressCityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Provinces_Countries">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Provinces" Type="Self.Provinces" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="IDCountry" />
+            </Principal>
+            <Dependent Role="Provinces">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MediaGallery_MediaAlbums">
+          <End Role="MediaAlbums" Type="Self.MediaAlbums" Multiplicity="0..1" />
+          <End Role="MediaGallery" Type="Self.MediaGallery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MediaAlbums">
+              <PropertyRef Name="IDAlbum" />
+            </Principal>
+            <Dependent Role="MediaGallery">
+              <PropertyRef Name="AlbumID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MediaGallery_MediaTypes">
+          <End Role="MediaTypes" Type="Self.MediaTypes" Multiplicity="1" />
+          <End Role="MediaGallery" Type="Self.MediaGallery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MediaTypes">
+              <PropertyRef Name="IDMediaType" />
+            </Principal>
+            <Dependent Role="MediaGallery">
+              <PropertyRef Name="MediaTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PostContentFragments_Posts">
+          <End Role="Posts" Type="Self.Posts" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PostContentFragments" Type="Self.PostContentFragments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Posts">
+              <PropertyRef Name="IDUser" />
+              <PropertyRef Name="IDPost" />
+            </Principal>
+            <Dependent Role="PostContentFragments">
+              <PropertyRef Name="UserID" />
+              <PropertyRef Name="PostID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SitePageFragments_SitePages">
+          <End Role="SitePages" Type="Self.SitePages" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SitePageFragments" Type="Self.SitePageFragments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SitePages">
+              <PropertyRef Name="IDPage" />
+            </Principal>
+            <Dependent Role="SitePageFragments">
+              <PropertyRef Name="PageID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SliderImages_Sliders">
+          <End Role="Sliders" Type="Self.Sliders" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="SliderImages" Type="Self.SliderImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Sliders">
+              <PropertyRef Name="IDSlider" />
+            </Principal>
+            <Dependent Role="SliderImages">
+              <PropertyRef Name="SliderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_webpages_Membership_Users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="webpages_Membership" Type="Self.webpages_Membership" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="IDUser" />
+            </Principal>
+            <Dependent Role="webpages_Membership">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="webpages_UsersInRoles">
+          <End Role="Users" Type="Self.Users" Multiplicity="*" />
+          <End Role="webpages_Roles" Type="Self.webpages_Roles" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="SocialDataEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cities" EntityType="Self.Cities" />
+          <EntitySet Name="CompanyInfo" EntityType="Self.CompanyInfo" />
+          <EntitySet Name="ContactUs" EntityType="Self.ContactUs" />
+          <EntitySet Name="Countries" EntityType="Self.Countries" />
+          <EntitySet Name="MediaAlbums" EntityType="Self.MediaAlbums" />
+          <EntitySet Name="MediaGallery" EntityType="Self.MediaGallery" />
+          <EntitySet Name="MediaTypes" EntityType="Self.MediaTypes" />
+          <EntitySet Name="PostContentFragments" EntityType="Self.PostContentFragments" />
+          <EntitySet Name="Posts" EntityType="Self.Posts" />
+          <EntitySet Name="Provinces" EntityType="Self.Provinces" />
+          <EntitySet Name="SitePageFragments" EntityType="Self.SitePageFragments" />
+          <EntitySet Name="SitePages" EntityType="Self.SitePages" />
+          <EntitySet Name="SliderImages" EntityType="Self.SliderImages" />
+          <EntitySet Name="Sliders" EntityType="Self.Sliders" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Users" EntityType="Self.Users" />
+          <EntitySet Name="webpages_Membership" EntityType="Self.webpages_Membership" />
+          <EntitySet Name="webpages_Roles" EntityType="Self.webpages_Roles" />
+          <AssociationSet Name="FK_Cities_Provinces" Association="Self.FK_Cities_Provinces">
+            <End Role="Provinces" EntitySet="Provinces" />
+            <End Role="Cities" EntitySet="Cities" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Cities" Association="Self.FK_Users_Cities">
+            <End Role="Cities" EntitySet="Cities" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Provinces_Countries" Association="Self.FK_Provinces_Countries">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="Provinces" EntitySet="Provinces" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MediaGallery_MediaAlbums" Association="Self.FK_MediaGallery_MediaAlbums">
+            <End Role="MediaAlbums" EntitySet="MediaAlbums" />
+            <End Role="MediaGallery" EntitySet="MediaGallery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MediaGallery_MediaTypes" Association="Self.FK_MediaGallery_MediaTypes">
+            <End Role="MediaTypes" EntitySet="MediaTypes" />
+            <End Role="MediaGallery" EntitySet="MediaGallery" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PostContentFragments_Posts" Association="Self.FK_PostContentFragments_Posts">
+            <End Role="Posts" EntitySet="Posts" />
+            <End Role="PostContentFragments" EntitySet="PostContentFragments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SitePageFragments_SitePages" Association="Self.FK_SitePageFragments_SitePages">
+            <End Role="SitePages" EntitySet="SitePages" />
+            <End Role="SitePageFragments" EntitySet="SitePageFragments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SliderImages_Sliders" Association="Self.FK_SliderImages_Sliders">
+            <End Role="Sliders" EntitySet="Sliders" />
+            <End Role="SliderImages" EntitySet="SliderImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_webpages_Membership_Users" Association="Self.FK_webpages_Membership_Users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="webpages_Membership" EntitySet="webpages_Membership" />
+          </AssociationSet>
+          <AssociationSet Name="webpages_UsersInRoles" Association="Self.webpages_UsersInRoles">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="webpages_Roles" EntitySet="webpages_Roles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="SocialDataModelStoreContainer" CdmEntityContainer="SocialDataEntities">
+          <EntitySetMapping Name="Cities">
+            <EntityTypeMapping TypeName="SocialDataModel.Cities">
+              <MappingFragment StoreEntitySet="Cities">
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="ProvinceID" ColumnName="ProvinceID" />
+                <ScalarProperty Name="IDCity" ColumnName="IDCity" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyInfo">
+            <EntityTypeMapping TypeName="SocialDataModel.CompanyInfo">
+              <MappingFragment StoreEntitySet="CompanyInfo">
+                <ScalarProperty Name="IDWebsite" ColumnName="IDWebsite" />
+                <ScalarProperty Name="PositionName" ColumnName="PositionName" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="ManagerName" ColumnName="ManagerName" />
+                <ScalarProperty Name="PhoneLine1" ColumnName="PhoneLine1" />
+                <ScalarProperty Name="PhoneLine2" ColumnName="PhoneLine2" />
+                <ScalarProperty Name="PhoneLine3" ColumnName="PhoneLine3" />
+                <ScalarProperty Name="CompanyAddress" ColumnName="CompanyAddress" />
+                <ScalarProperty Name="ThumnailMapPath" ColumnName="ThumnailMapPath" />
+                <ScalarProperty Name="GoogleMapScript" ColumnName="GoogleMapScript" />
+                <ScalarProperty Name="ExtraMessage" ColumnName="ExtraMessage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ContactUs">
+            <EntityTypeMapping TypeName="SocialDataModel.ContactUs">
+              <MappingFragment StoreEntitySet="ContactUs">
+                <ScalarProperty Name="IDMessage" ColumnName="IDMessage" />
+                <ScalarProperty Name="MessageDateTime" ColumnName="MessageDateTime" />
+                <ScalarProperty Name="MessageDateTimeGregorian" ColumnName="MessageDateTimeGregorian" />
+                <ScalarProperty Name="PersonFullName" ColumnName="PersonFullName" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="EMail" ColumnName="EMail" />
+                <ScalarProperty Name="WebSite" ColumnName="WebSite" />
+                <ScalarProperty Name="MessageSubject" ColumnName="MessageSubject" />
+                <ScalarProperty Name="MessageBody" ColumnName="MessageBody" />
+                <ScalarProperty Name="IsRead" ColumnName="IsRead" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="SocialDataModel.Countries">
+              <MappingFragment StoreEntitySet="Countries">
+                <ScalarProperty Name="IDCountry" ColumnName="IDCountry" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MediaAlbums">
+            <EntityTypeMapping TypeName="SocialDataModel.MediaAlbums">
+              <MappingFragment StoreEntitySet="MediaAlbums">
+                <ScalarProperty Name="IDAlbum" ColumnName="IDAlbum" />
+                <ScalarProperty Name="AlbumTitle" ColumnName="AlbumTitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MediaGallery">
+            <EntityTypeMapping TypeName="SocialDataModel.MediaGallery">
+              <MappingFragment StoreEntitySet="MediaGallery">
+                <ScalarProperty Name="IDGalleryItem" ColumnName="IDGalleryItem" />
+                <ScalarProperty Name="AlbumID" ColumnName="AlbumID" />
+                <ScalarProperty Name="ItemTitle" ColumnName="ItemTitle" />
+                <ScalarProperty Name="ThumbnailImagePath" ColumnName="ThumbnailImagePath" />
+                <ScalarProperty Name="ResourcePath" ColumnName="ResourcePath" />
+                <ScalarProperty Name="ItemDescription" ColumnName="ItemDescription" />
+                <ScalarProperty Name="MediaTypeID" ColumnName="MediaTypeID" />
+                <ScalarProperty Name="Published" ColumnName="Published" />
+                <ScalarProperty Name="SortOrder" ColumnName="SortOrder" />
+                <ScalarProperty Name="MediaTags" ColumnName="MediaTags" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MediaTypes">
+            <EntityTypeMapping TypeName="SocialDataModel.MediaTypes">
+              <MappingFragment StoreEntitySet="MediaTypes">
+                <ScalarProperty Name="IDMediaType" ColumnName="IDMediaType" />
+                <ScalarProperty Name="MediaTypeTitle" ColumnName="MediaTypeTitle" />
+                <ScalarProperty Name="ResourcesPrefix" ColumnName="ResourcesPrefix" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="PostContentFragments">
             <EntityTypeMapping TypeName="SocialDataModel.PostContentFragments">
               <MappingFragment StoreEntitySet="PostContentFragments">
-                <ScalarProperty Name="PostContent" ColumnName="PostContent" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="PostID" ColumnName="PostID" />
                 <ScalarProperty Name="FragmentIndex" ColumnName="FragmentIndex" />
-                <ScalarProperty Name="PostId" ColumnName="PostId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="PostContent" ColumnName="PostContent" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Posts">
             <EntityTypeMapping TypeName="SocialDataModel.Posts">
               <MappingFragment StoreEntitySet="Posts">
-                <ScalarProperty Name="HasFragments" ColumnName="HasFragments" />
-                <ScalarProperty Name="PostContent" ColumnName="PostContent" />
-                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+                <ScalarProperty Name="IDPost" ColumnName="IDPost" />
                 <ScalarProperty Name="PublishDateTime" ColumnName="PublishDateTime" />
-                <ScalarProperty Name="PostId" ColumnName="PostId" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="IsPublished" ColumnName="IsPublished" />
+                <ScalarProperty Name="PostContent" ColumnName="PostContent" />
+                <ScalarProperty Name="HasFragments" ColumnName="HasFragments" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Provinces">
+            <EntityTypeMapping TypeName="SocialDataModel.Provinces">
+              <MappingFragment StoreEntitySet="Provinces">
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="IDProvince" ColumnName="IDProvince" />
+                <ScalarProperty Name="ProvinceName" ColumnName="ProvinceName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SitePageFragments">
+            <EntityTypeMapping TypeName="SocialDataModel.SitePageFragments">
+              <MappingFragment StoreEntitySet="SitePageFragments">
+                <ScalarProperty Name="PageID" ColumnName="PageID" />
+                <ScalarProperty Name="FragmentIndex" ColumnName="FragmentIndex" />
+                <ScalarProperty Name="PageContent" ColumnName="PageContent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SitePages">
+            <EntityTypeMapping TypeName="SocialDataModel.SitePages">
+              <MappingFragment StoreEntitySet="SitePages">
+                <ScalarProperty Name="IDPage" ColumnName="IDPage" />
+                <ScalarProperty Name="PageInternalName" ColumnName="PageInternalName" />
+                <ScalarProperty Name="PageTitle" ColumnName="PageTitle" />
+                <ScalarProperty Name="PageContent" ColumnName="PageContent" />
+                <ScalarProperty Name="HasFragments" ColumnName="HasFragments" />
+                <ScalarProperty Name="Published" ColumnName="Published" />
+                <ScalarProperty Name="IsMetaEditable" ColumnName="IsMetaEditable" />
+                <ScalarProperty Name="IsScript" ColumnName="IsScript" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SliderImages">
+            <EntityTypeMapping TypeName="SocialDataModel.SliderImages">
+              <MappingFragment StoreEntitySet="SliderImages">
+                <ScalarProperty Name="SliderID" ColumnName="SliderID" />
+                <ScalarProperty Name="SlideIndex" ColumnName="SlideIndex" />
+                <ScalarProperty Name="ThumbnailImagePath" ColumnName="ThumbnailImagePath" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="SlideTitle" ColumnName="SlideTitle" />
+                <ScalarProperty Name="SlideDescription" ColumnName="SlideDescription" />
+                <ScalarProperty Name="Published" ColumnName="Published" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Sliders">
+            <EntityTypeMapping TypeName="SocialDataModel.Sliders">
+              <MappingFragment StoreEntitySet="Sliders">
+                <ScalarProperty Name="IDSlider" ColumnName="IDSlider" />
+                <ScalarProperty Name="InternalName" ColumnName="InternalName" />
+                <ScalarProperty Name="SliderWith" ColumnName="SliderWith" />
+                <ScalarProperty Name="SliderHeight" ColumnName="SliderHeight" />
+                <ScalarProperty Name="Published" ColumnName="Published" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="SocialDataModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="SocialDataModel.Users">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="IDUser" ColumnName="IDUser" />
+                <ScalarProperty Name="UserFullName" ColumnName="UserFullName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="EMail" ColumnName="EMail" />
+                <ScalarProperty Name="RegisterationDateTime" ColumnName="RegisterationDateTime" />
+                <ScalarProperty Name="RegisterationDateTimeGregorian" ColumnName="RegisterationDateTimeGregorian" />
+                <ScalarProperty Name="Telephone" ColumnName="Telephone" />
+                <ScalarProperty Name="Mobile" ColumnName="Mobile" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="WebAddress" ColumnName="WebAddress" />
+                <ScalarProperty Name="AddressCountryID" ColumnName="AddressCountryID" />
+                <ScalarProperty Name="AddressProvinceID" ColumnName="AddressProvinceID" />
+                <ScalarProperty Name="AddressCityID" ColumnName="AddressCityID" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+                <ScalarProperty Name="IsEmployee" ColumnName="IsEmployee" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_Membership">
+            <EntityTypeMapping TypeName="SocialDataModel.webpages_Membership">
+              <MappingFragment StoreEntitySet="webpages_Membership">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="ConfirmationToken" ColumnName="ConfirmationToken" />
+                <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
+                <ScalarProperty Name="LastPasswordFailureDate" ColumnName="LastPasswordFailureDate" />
+                <ScalarProperty Name="PasswordFailuresSinceLastSuccess" ColumnName="PasswordFailuresSinceLastSuccess" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="PasswordChangedDate" ColumnName="PasswordChangedDate" />
+                <ScalarProperty Name="PasswordSalt" ColumnName="PasswordSalt" />
+                <ScalarProperty Name="PasswordVerificationToken" ColumnName="PasswordVerificationToken" />
+                <ScalarProperty Name="PasswordVerificationTokenExpirationDate" ColumnName="PasswordVerificationTokenExpirationDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="webpages_Roles">
+            <EntityTypeMapping TypeName="SocialDataModel.webpages_Roles">
+              <MappingFragment StoreEntitySet="webpages_Roles">
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="webpages_UsersInRoles" TypeName="SocialDataModel.webpages_UsersInRoles" StoreEntitySet="webpages_UsersInRoles">
+            <EndProperty Name="Users">
+              <ScalarProperty Name="IDUser" ColumnName="UserID" />
+            </EndProperty>
+            <EndProperty Name="webpages_Roles">
+              <ScalarProperty Name="RoleID" ColumnName="RoleId" />
+            </EndProperty>
+          </AssociationSetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <Connection>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
@@ -149,7 +1131,7 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>

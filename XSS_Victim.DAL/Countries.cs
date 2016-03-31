@@ -12,13 +12,16 @@ namespace XSS_Victim.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class PostContentFragments
+    public partial class Countries
     {
-        public int UserID { get; set; }
-        public long PostID { get; set; }
-        public int FragmentIndex { get; set; }
-        public string PostContent { get; set; }
+        public Countries()
+        {
+            this.Provinces = new HashSet<Provinces>();
+        }
     
-        public virtual Posts Posts { get; set; }
+        public long IDCountry { get; set; }
+        public string CountryName { get; set; }
+    
+        public virtual ICollection<Provinces> Provinces { get; set; }
     }
 }

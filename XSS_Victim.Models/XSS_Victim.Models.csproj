@@ -39,9 +39,18 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="RoyaImageProcessingEngine">
+      <HintPath>..\..\__Libraries\_GAC\RoyaImageProcessingEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="RoyaMVC_EN">
+      <HintPath>..\..\__Libraries\_GAC\RoyaMVC_EN.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,18 +59,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AdminRepository.cs" />
+    <Compile Include="Repositories\ContactUsMessagesRepository.cs" />
+    <Compile Include="Repositories\IRepositoryBase.cs" />
+    <Compile Include="Repositories\MediaGalleryRepository.cs" />
+    <None Include="temp\OrdersRepository.cs" />
     <Compile Include="Repositories\PostsRepository.cs" />
+    <None Include="temp\ProductsRepository.cs" />
     <Compile Include="Repositories\RepositoryBase.cs" />
+    <Compile Include="Repositories\SitePagesRepository.cs" />
+    <Compile Include="Repositories\UserRolesRepository.cs" />
+    <Compile Include="Repositories\UsersRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\XSS_Victim.DAL\XSS_Victim.DAL.csproj">
       <Project>{6c558eee-30ca-436e-a72c-a6bcc22f54cf}</Project>
       <Name>XSS_Victim.DAL</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
-    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

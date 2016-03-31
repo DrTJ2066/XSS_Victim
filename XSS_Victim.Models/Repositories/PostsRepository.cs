@@ -22,6 +22,7 @@ namespace XSS_Victim.Models.Repositories
     /// </summary>
     public class PostsRepository : RepositoryBase
     {
+        public PostsRepository() : base() { }
 
         public List<DAL.Posts> GetPosts(int count = 0)
         {

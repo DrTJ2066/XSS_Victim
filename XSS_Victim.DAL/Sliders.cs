@@ -12,13 +12,19 @@ namespace XSS_Victim.DAL
     using System;
     using System.Collections.Generic;
     
-    public partial class PostContentFragments
+    public partial class Sliders
     {
-        public int UserID { get; set; }
-        public long PostID { get; set; }
-        public int FragmentIndex { get; set; }
-        public string PostContent { get; set; }
+        public Sliders()
+        {
+            this.SliderImages = new HashSet<SliderImages>();
+        }
     
-        public virtual Posts Posts { get; set; }
+        public int IDSlider { get; set; }
+        public string InternalName { get; set; }
+        public string SliderWith { get; set; }
+        public string SliderHeight { get; set; }
+        public bool Published { get; set; }
+    
+        public virtual ICollection<SliderImages> SliderImages { get; set; }
     }
 }
