@@ -36,12 +36,11 @@ namespace XSS_Victim.Models.Repositories
             res.Mobile = newUserData.Mobile;
             res.Description = newUserData.Description;
             res.WebAddress = newUserData.WebAddress;
-            res.AddressCountryID = newUserData.AddressCountryID;
-            res.AddressProvinceID = newUserData.AddressProvinceID;
-            res.AddressCityID = newUserData.AddressCityID;
+            res.AddressCountryName = newUserData.AddressCountryName;
+            res.AddressProvinceName = newUserData.AddressProvinceName;
+            res.AddressCityName = newUserData.AddressCityName;
             res.Address = newUserData.Address;
             
-            this.Context.Users.ApplyCurrentValues(res);
             this.Context.SaveChanges();
             return true;
         }
@@ -98,9 +97,9 @@ namespace XSS_Victim.Models.Repositories
                               UserFullName = w.UserFullName,
                               Password = w.Password,
                               EMail = w.EMail,
-                              AddressCityName = w.AddressCityID,
-                              AddressCountryID = w.AddressCountryID,
-                              AddressProvinceName = w.AddressProvinceID,
+                              AddressCityName = w.AddressCityName,
+                              AddressCountryName = w.AddressCountryName,
+                              AddressProvinceName = w.AddressProvinceName,
                               Description = w.Description
                           })
                           .First();

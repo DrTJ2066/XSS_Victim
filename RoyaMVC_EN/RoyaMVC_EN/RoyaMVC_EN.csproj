@@ -37,21 +37,22 @@
     <AssemblyOriginatorKeyFile>RoyaMVC_EN.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>.\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.Web.Administration, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\Microsoft.Web.Administration.dll</HintPath>
     </Reference>
-    <Reference Include="RoyaDateEngine">
-      <HintPath>..\..\_GAC\RoyaDateEngine.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -92,7 +93,6 @@
     <Compile Include="HTMLHelpers\RoyaImageTag.cs" />
     <Compile Include="HTMLHelpers\RoyaLabelTag.cs" />
     <Compile Include="HTMLHelpers\RoyaTextBoxTag.cs" />
-    <Compile Include="HTMLHelpers\RoyaPersianDatePicker.cs" />
     <Compile Include="HTMLHelpers\RoyaRadioButtonTag.cs" />
     <Compile Include="HTMLHelpers\RoyaCheckBox.cs" />
     <Compile Include="HTMLHelpers\RoyaTagBase.cs" />
@@ -102,7 +102,6 @@
     <Compile Include="Models\CommentItemViewModel.cs" />
     <Compile Include="Models\CommentViewModel.cs" />
     <Compile Include="Models\CompanyData.cs" />
-    <Compile Include="Models\DirectoryData.cs" />
     <Compile Include="Models\ICompanyData.cs" />
     <Compile Include="AccountManagement\UserModel.cs" />
     <Compile Include="Models\PictureGalleryItem.cs" />
@@ -136,21 +135,23 @@
     <Compile Include="VisitorsCounterViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\RoyaSecurity\RoyaSecurity.csproj">
-      <Project>{4F358658-C008-40F9-88A3-691F91F5B945}</Project>
-      <Name>RoyaSecurity</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
     <None Include="Resources\HumanNoPhotoIcon.png" />
     <None Include="Resources\NoPhotoIcon.jpg" />
     <Content Include="DomainManager\Index.htm" />
     <Content Include="EMail\CreateAccountConfirmationEMail.html" />
     <Content Include="EMail\PasswordResetEmail.html" />
     <Content Include="Scripts\RoyaGeneralScripts.js" />
-    <Content Include="Styles\RoyaOptionItemStyle.css" />
-    <Content Include="Styles\RoyaPublicStyles.css" />
-    <Content Include="Styles\RoyaToolTip.css" />
+    <Content Include="Styles\RoyaOptionItemStyle.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Styles\RoyaPublicStyles.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Styles\RoyaToolTip.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="RoyaMVC_EN.pfx" />
   </ItemGroup>
   <ItemGroup>

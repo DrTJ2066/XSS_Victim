@@ -21,7 +21,7 @@ http://github.com/necolas/css3-facebook-buttons
     white-space: nowrap; 
     cursor: pointer; 
     /* outline: none; */
-    color: #333; 
+    color: #000; 
     background-color: #eee;
     background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f5f6f6), to(#e4e4e3));
     background-image: -moz-linear-gradient(#f5f6f6, #e4e4e3);

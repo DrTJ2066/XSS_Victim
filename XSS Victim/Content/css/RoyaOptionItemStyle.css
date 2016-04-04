@@ -1,0 +1,72 @@
+﻿.OptionItem { margin: 10px 10px 5px 10px; display: inline-block; width: 165px; overflow: visible; position: relative; vertical-align: bottom; }
+.OptionItem         a:hover { border: thin dotted rgba(255, 204, 0, 0.6); background-color: rgba(255, 255, 204, 0.6); margin: 0px; }
+.OptionItem_Orange  a:hover { border: thin dotted rgba(255, 204, 0, 0.6); background-color: rgba(255, 255, 204, 0.6); margin: 0px; }
+.OptionItem_Blue    a:hover { border: thin dotted rgba(0, 0, 255, 0.6); background-color: rgba(198, 198, 255, 0.6); margin: 0px; }
+.OptionItem img { margin-top: 10px; width: 128px; height: 128px; border-width: 0px; }
+.OptionItem a { text-decoration: none; color: #000080; cursor: pointer; text-align: center; font-family: tahoma; font-size: small; display: block; width: 100%; padding: 0px 0px 5px 0px !important; margin: 1px; }
+.OptionItem a div { width:100%; height:100%; }
+.OptionItem a div div, 
+.OptionItem .OptionText { text-align: center; margin: 6px 5px; text-shadow: 2px 2px 5px #FFFFFF; filter: dropshadow(color=#FFFFFF, offx=2, offy=2); font: normal normal normal 1em/1 Tahoma; height: auto; }
+
+
+
+.ThumbnailItem { margin: 10px 5px 5px 5px; display: inline-block; width: 185px; height: 142px; overflow: visible; position: relative; vertical-align: bottom; }
+.ThumbnailItem img { width: 100%; height: 100%; border-width: 0px; }
+.ThumbnailItem a { text-decoration: none; color: #000080; cursor: pointer; text-align: center; font-family: tahoma; font-size: small; display: block; width: 100%; height: 100%; padding: 0px !important; margin: 0px; }
+.ThumbnailItem a div { width:100%; height:100%; }
+.ThumbnailItem a div div, 
+.ThumbnailItem .OptionText { text-align: center; font: 1em/1 Tahoma; background-color: rgba(0, 0, 0, 0.8); position: absolute; color: white; width: 100%; height: auto; bottom: 0px; left: 0px; padding: 5px 0px; }
+.ThumbnailItem:hover .OptionText:after { content: attr(data-details); display: block; text-align: right; padding: 5px 5px 0px; line-height: 15px; }
+.ThumbnailItem:hover .OptionText  
+{
+    height: 45%;
+    -webkit-transition: height 1s ease-in-out;
+    -moz-transition: height 1s ease-in-out;
+    -ms-transition: height 1s ease-in-out;
+    -o-transition: height 1s ease-in-out;
+    transition: height 1s ease-in-out;
+}
+
+.notification {
+    border-radius: 50em 50em 50em 50em;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08), 0 1px rgba(255, 255, 255, 0.3) inset;
+    color: #FFFFFF !important;
+    height: 16px;
+    line-height: 16px;
+    padding: 6px 10px;
+    position: absolute;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.25);
+    left: 10px;
+    top: 10px;
+}
+.notification-small {
+    border-radius: 50em 50em 50em 50em;
+    border-style: solid;
+    border-width: 1px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.08), 0 1px rgba(255, 255, 255, 0.3) inset;
+    color: #FFFFFF !important;
+    padding: 2px 7px;
+    text-shadow: 0 1px rgba(0, 0, 0, 0.25);
+}
+.notification-small, .notification {
+    background-color: #67C2EF;
+    background-image: -moz-linear-gradient(center top , #ACDDF5, #66C1EF);
+    border-color: #2FABE9;
+}
+.notification-small.green, .notification.green {
+    background-color: #78CD51;
+    background-image: -moz-linear-gradient(center top , #A6DC8D, #78CC51);
+    border-color: #5AAD34;
+}
+.notification-small.yellow, .notification.yellow {
+    background-color: #FABB3D;
+    background-image: -moz-linear-gradient(center top , #FBD587, #FABB3D);
+    border-color: #F4A506;
+}
+.notification-small.red, .notification.red {
+    background-color: #FA603D;
+    background-image: -moz-linear-gradient(center top , #FB9C87, #FA5F3D);
+    border-color: #FA5833;
+}

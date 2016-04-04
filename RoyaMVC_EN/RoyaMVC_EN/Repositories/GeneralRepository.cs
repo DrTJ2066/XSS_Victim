@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using RoyaMVC_EN.Repositories;
-using System.Data.Objects;
 using RoyaMVC_EN.Models;
+using System.Data.Entity.Core.Objects;
 
 namespace RoyaMVC_EN.Models.Repositories
 {

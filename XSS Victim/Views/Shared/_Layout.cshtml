@@ -2,14 +2,18 @@
 <html lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>@ViewBag.Title - XSS Host Page</title>
+    <title>@ViewBag.Title - XSS Victims Network</title>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
 
-    <link href="~/Content/css/profile.css" type="text/css" rel="stylesheet" />
+    <link href="~/Content/css/Site.css" type="text/css" rel="stylesheet" />
     <link rel="stylesheet" href="~/Content/css/fb-buttons.css">
     <script src="~/Content/js/jquery.min.js"></script>
     <script src="~/Content/js/jquery.masonry.min.js"></script>
+
+    <link href="~/Content/css/RoyaOptionItemStyle.css" rel="stylesheet" />
+    <link href="~/Content/css/RoyaToolTip.css" rel="stylesheet" />
+
     <script>
         $(function () {
 
@@ -37,43 +41,32 @@
 </head>
 <body>
     <header>
-        <div class="msg">
-            <div style="padding-top:10px; margin-bottom: 10px;">
-                <a class="uibutton icon add" href="#button" style="width:120px;">Register</a>
-                <a class="uibutton icon add" href="#button" style="width:120px;">Sign-in</a>
-            </div>
-        </div>
-        <!-- پایان کد باکس دعوت به عضویت و ورود -->
+        <span class="WebsiteTitle"><a href="/">XSS Victim's Social Network!</a></span>
 
+        <div class="LoginRegisterSection">
+            <a class="uibutton icon add" href='@Url.Action("Register", "Account")'>Register</a>
+            <a class="uibutton icon add" href='@Url.Action("Login", "Account")'>Login</a>
+        </div>
+        
         <div style="clear:both;"></div>
-
-        <img class="avatar" src="~/Content/imgs/avatar.jpg" />
-        <div style="width:300px;direction:ltr;margin-right:5px;float:left;margin-top:260px;font:9pt tahoma;line-height:20px;">
-            <img src="~/Content/imgs/oline.png" /> Name : Mohammad Taghi Jahed<br>
-            <img src="~/Content/imgs/oline.png" /> Location : Bogota, Colombia<br>
-            <img src="~/Content/imgs/oline.png" /> Phone : 3044337163 <br>
-            <img src="~/Content/imgs/oline.png" /> EMail : mohammad.taghi@processa.com
-        </div>
-
-        <!-- شروع کد دکمه های پروفایل -->
-        <div style="width:320px;direction:ltr;margin-left:5px;float:right;margin-top:260px;font:9pt tahoma;">
-            <a class="uibutton icon add" href="#button" style="width:75px;">Follow me</a>
-            <a class="uibutton icon edit" href="#button" style="width:75px;">Add Friend</a>
-            <a class="uibutton icon edit" href="#button" style="width:95px;">Send Message</a>
-        </div>
-        <!-- پایان کد دکمه های پروفایل -->
     </header>
 
+    @RenderSection("Header", false)
 
-    @RenderBody()
+    <div class="Content">
+        @RenderBody()
+    </div>
 
-
+    <div class="Content">
+		@RenderSection("Footer", false)
+	</div>
+	
     <hr style="color:#c00;background-color:#ccc;height:1px;border:none; width:999px;" />
     <div id="subfooter" style="width:980px; margin:5pt auto 15pt auto; display: block">
         <div id="sfleft" style="font:10pt tahoma;line-height:22px; text-align: left;">
             Mohammad Taghi Jahed | .Net engineer | taghi.jahed@yahoo.com | 3044337163
             <br/>
-            <a href="https://github.com/DrTJ/XSS_Victim/tree/processa">Download the code on Github!</a>
+            You can download the code from <a style="font-weight: bold;" href="https://github.com/DrTJ/XSS_Victim/tree/processa">Github! [ https://github.com/DrTJ/XSS_Victim ]</a>
         </div>
     </div>
 </body>

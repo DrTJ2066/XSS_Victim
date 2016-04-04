@@ -4,10 +4,10 @@ using System.Data.Entity.Infrastructure;
 using System.Threading;
 using System.Web.Mvc;
 using WebMatrix.WebData;
-using RoyaMVC.AccountManagement;
+using RoyaMVC_EN.AccountManagement;
 using WebMatrix.Data;
 
-namespace RoyaTaxi.Filters
+namespace XSS_Victim.Filters
 {
     [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = false, Inherited = true)]
     public sealed class InitializeSimpleMembershipAttribute : ActionFilterAttribute
@@ -17,16 +17,13 @@ namespace RoyaTaxi.Filters
         private static bool _isInitialized;
 
         public override void OnActionExecuting(ActionExecutingContext filterContext) {
-            var repoProducts = new RoyaTaxi.Models.Repositories.ProductsRepository();
-            filterContext.Controller.ViewBag.MenuItems = repoProducts.GetProductsMenu();
-
             InitializeProductsCategories(filterContext);
 
             LazyInitializer.EnsureInitialized(ref _initializer, ref _isInitialized, ref _initializerLock);
 
             if (WebMatrix.WebData.WebSecurity.IsAuthenticated) {
                 if (string.IsNullOrWhiteSpace(CurrentUser.UserName)) {
-                    var repoUsers = new RoyaTaxi.Models.Repositories.UsersRepository();
+                    var repoUsers = new XSS_Victim.Models.Repositories.UsersRepository();
                     repoUsers.SetCurrentUser(WebMatrix.WebData.WebSecurity.CurrentUserName);
 
                     filterContext.Controller.ViewBag.UserFullName = CurrentUser.DisplayName;
@@ -43,19 +40,19 @@ namespace RoyaTaxi.Filters
         }
 
         private void InitializeProductsCategories(ActionExecutingContext filterContext) {
-            var repoProducts = new Models.Repositories.ProductsRepository();
-            var resCategoriesList = repoProducts.GetCategoriesListWithProducts();
+            //var repoProducts = new Models.Repositories.ProductsRepository();
+            //var resCategoriesList = repoProducts.GetCategoriesListWithProducts();
 
-            filterContext.Controller.ViewBag.ProductCategoriesList = resCategoriesList;
+            //filterContext.Controller.ViewBag.ProductCategoriesList = resCategoriesList;
         }
 
         private class SimpleMembershipInitializer
         {
             public SimpleMembershipInitializer() {
-                System.Data.Entity.Database.SetInitializer<UsersContext<RoyaMVC.Models.Users>>(null);
+                System.Data.Entity.Database.SetInitializer<UsersContext<RoyaMVC_EN.Models.Users>>(null);
 
                 try {
-                    using (var context = new UsersContext<RoyaMVC.Models.Users>("DefaultConnection")) {
+                    using (var context = new UsersContext<RoyaMVC_EN.Models.Users>("DefaultConnection")) {
                         if (!context.Database.Exists()) {
                             // Create the SimpleMembership database without Entity Framework migration schema
                             //((IObjectContextAdapter)context).ObjectContext.CreateDatabase();

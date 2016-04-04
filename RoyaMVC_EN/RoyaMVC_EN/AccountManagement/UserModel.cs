@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace RoyaMVC_EN.Models
 {
@@ -45,7 +45,7 @@ namespace RoyaMVC_EN.Models
         public string Description { get; set; }
 
         [Display(Name = "Country :")]
-        public long AddressCountryID { get; set; }
+        public string AddressCountryName { get; set; }
 
         [Display(Name = "State/Province :")]
         public string AddressProvinceName { get; set; }

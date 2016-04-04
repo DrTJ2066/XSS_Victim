@@ -1,0 +1,65 @@
+﻿@{ 
+    var profileData = ViewBag.UserProfile as XSS_Victim.DAL.Users;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link href="~/Content/css/profile.css" type="text/css" rel="stylesheet" />
+    
+    <script src="~/Content/js/jquery.masonry.min.js"></script>
+    <script>
+        $(function () {
+
+            function Arrow_Points() {
+                var s = $('#container').find('.item');
+                $.each(s, function (i, obj) {
+                    var posLeft = $(obj).css("left");
+                    $(obj).addClass('borderclass');
+                    if (posLeft == "0px") {
+                        html = "<span class='rightCorner'></span>";
+                        $(obj).prepend(html);
+                    }
+                    else {
+                        html = "<span class='leftCorner'></span>";
+                        $(obj).prepend(html);
+                    }
+                });
+            }
+            // Divs
+            $('#container').masonry({ itemSelector: '.item', });
+            Arrow_Points();
+
+        });
+    </script>
+</head>
+<body>
+    @section Header{
+    <header class="header">
+        <div style="margin-top:350px;">
+            <img class="avatar" src="@profileData.ProfilePicturePath" />
+            <div style="width:300px;direction:ltr;margin-right:5px;float:left;font:9pt tahoma;line-height:20px;">
+                <img src="~/Content/imgs/oline.png" /> Name : @profileData.UserFullName<br>
+                <img src="~/Content/imgs/oline.png" /> Location : @string.Format("{0}, {1}", profileData.AddressCityName, profileData.AddressCountryName)<br>
+                <img src="~/Content/imgs/oline.png" /> Phone : @profileData.Mobile<br>
+                <img src="~/Content/imgs/oline.png" /> EMail : @profileData.EMail
+            </div>
+        </div>
+
+        <div style="width:320px;direction:ltr;margin-left:5px;float:right;font:9pt tahoma;">
+            <a class="uibutton icon add" href="#" style="width:75px;">Follow me</a>
+            <a class="uibutton icon edit" href="#" style="width:75px;">Add Friend</a>
+            <a class="uibutton icon edit" href="#" style="width:95px;">Send Message</a>
+        </div>
+    </header>
+    }
+
+
+
+    @RenderBody()
+
+
+</body>
+</html>

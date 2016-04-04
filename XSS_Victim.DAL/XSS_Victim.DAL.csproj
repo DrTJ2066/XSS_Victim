@@ -46,17 +46,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net40\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="RoyaMVC_EN">
-      <HintPath>..\..\__Libraries\_GAC\RoyaMVC_EN.dll</HintPath>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
@@ -67,16 +67,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BigContentHandlers.cs" />
-    <Compile Include="Cities.cs">
-      <DependentUpon>SocialDataModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="CompanyInfo.cs">
       <DependentUpon>SocialDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="ContactUs.cs">
-      <DependentUpon>SocialDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Countries.cs">
       <DependentUpon>SocialDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="MediaAlbums.cs">
@@ -95,19 +89,10 @@
       <DependentUpon>SocialDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Provinces.cs">
-      <DependentUpon>SocialDataModel.tt</DependentUpon>
-    </Compile>
     <Compile Include="SitePageFragments.cs">
       <DependentUpon>SocialDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SitePages.cs">
-      <DependentUpon>SocialDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SliderImages.cs">
-      <DependentUpon>SocialDataModel.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Sliders.cs">
       <DependentUpon>SocialDataModel.tt</DependentUpon>
     </Compile>
     <Compile Include="SocialDataModel.Context.cs">
@@ -139,6 +124,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.Config" />
+    <None Include="packages.config" />
+    <EntityDeploy Include="SocialDataModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>SocialDataModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="SocialDataModel.edmx.diagram">
+      <DependentUpon>SocialDataModel.edmx</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
@@ -164,27 +160,22 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <EntityDeploy Include="SocialDataModel.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>SocialDataModel.Designer.cs</LastGenOutput>
-    </EntityDeploy>
+    <ProjectReference Include="..\RoyaMVC_EN\RoyaMVC_EN\RoyaMVC_EN.csproj">
+      <Project>{666bb016-604e-42ab-96d0-87907cdec8e6}</Project>
+      <Name>RoyaMVC_EN</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
-    <None Include="packages.config" />
-    <None Include="SocialDataModel.Context.tt">
+    <Content Include="SocialDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SocialDataModel.edmx</DependentUpon>
       <LastGenOutput>SocialDataModel.Context.cs</LastGenOutput>
-    </None>
-    <None Include="SocialDataModel.edmx.diagram">
-      <DependentUpon>SocialDataModel.edmx</DependentUpon>
-    </None>
-    <None Include="SocialDataModel.tt">
+    </Content>
+    <Content Include="SocialDataModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>SocialDataModel.edmx</DependentUpon>
       <LastGenOutput>SocialDataModel.cs</LastGenOutput>
-    </None>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

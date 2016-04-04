@@ -20,7 +20,7 @@ namespace XSS_Victim.Models.Repositories
             newItem.IDPage = GetNewID();
             newItem.StoreHugeContentInFragments();
 
-            this.Context.AddToSitePages(newItem);
+            this.Context.SitePages.Add(newItem);
             this.Context.SaveChanges();
 
             return newItem;
@@ -58,7 +58,7 @@ namespace XSS_Victim.Models.Repositories
 
             if (res == null) {
                 res = DAL.SitePages.NewSitePage(GetNewID(), theItem.PageInternalName, theItem.PageTitle, theItem.PageContent);
-                this.Context.AddToSitePages(res);
+                this.Context.SitePages.Add(res);
             }
             else {
                 res.PageTitle = theItem.PageTitle;
@@ -76,7 +76,7 @@ namespace XSS_Victim.Models.Repositories
             var item = this.Context.SitePages.FirstOrDefault(w => w.IDPage == id);
 
             if (item != null) {
-                this.Context.SitePages.DeleteObject(item);
+                this.Context.SitePages.Remove(item);
                 this.Context.SaveChanges();
             }
         }

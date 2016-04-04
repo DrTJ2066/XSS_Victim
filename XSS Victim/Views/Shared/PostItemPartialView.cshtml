@@ -1,10 +1,10 @@
-﻿@model XSS_Victim.Models.PostModel
+﻿@model XSS_Victim.DAL.Posts
 
 <div class="item">
     <div dir="ltr">
         <span style="float: left; margin-right: 10px; margin-top: 8px; padding-bottom: 5px;"><img style="width: 32px; width: 32px;" src="~/Content/imgs/av.png" /></span>
         <span style="float: left; font: 9pt tahoma; margin-bottom: 0px; margin-top: 8px;">
-            @Model.Author<br>
+            @Model.Users.UserFullName<br>
             <span style="color: #999; font: 8pt tahoma; line-height: 22px;">@string.Format("{0:dddd dd, MMMM yyyy}", Model.PublishDateTime)</span>
         </span>
         <div class="clr"></div>

@@ -1,53 +1,37 @@
-﻿@using XSS_Victim.Models
+﻿@model List<XSS_Victim.DAL.Users>
+@using RoyaMVC_EN.HTMLHelpers
+@using RoyaMVC_EN.Models
+@using XSS_Victim.Models
 @{
     ViewBag.Title = "Home Page";
-    var postItems = ViewBag.PostItems as List<PostModel> ?? new List<PostModel>();
 }
 
-<div id="container">
-    <div class="timeline_container">
-        <div class="timeline">
-        </div>
-    </div>
-    @foreach (var item in postItems)
+<div  class="Title">Last registered users</div>
+
+<div>
+
+    @foreach (var item in Model)
     {
-        Html.RenderPartial("PostItemPartialView", item);
+        @Html.RoyaOptionItem("user" + item.IDUser.ToString(),
+        item.UserFullName,
+        new RouteModel("Profile", "Index", new { id = item.IDUser }),
+        new RouteModel(item.ProfilePicturePath, true))
     }
 
-    @{
-        Html.RenderPartial("PostItemPartialView",
-            new PostModel()
-            {
-                Author = "Dr TJ",
-                PostContent = "This is a new post! This is a new post! This is a new post! This is a new post! This is a new post! This is a new post!",
-                PublishDateTime = DateTime.Now
-            });
-    }
-
-@{
-    Html.RenderPartial("PostItemPartialView",
-        new PostModel()
-        {
-            Author = "Dr TJ",
-            PostContent = "This is a new post! This is a new post! This is a new post! This is a new post! This is a new post! This is a new post!",
-            PublishDateTime = DateTime.Now
-        });
-}
-
-@{
-    Html.RenderPartial("PostItemPartialView",
-        new PostModel()
-        {
-            Author = "Dr TJ",
-            PostContent = "This is a new post! This is a new post! This is a new post! This is a new post! This is a new post! This is a new post!",
-            PublishDateTime = DateTime.Now
-        });
-}
+    @Html.RoyaOptionItem("user997",
+        "Mohammad Taghi Jahed",
+        new RouteModel("Profile", "Index", new { id = 997 }),
+        new RouteModel("../../Content/UserContents/User999_ProfilePicture.png", true))
 
 
-</div>
+    @Html.RoyaOptionItem("user998",
+        "Mohammad Taghi Jahed",
+        new RouteModel("Profile", "Index", new { id = 998 }),
+        new RouteModel("../../Content/imgs/avatar.jpg", true))
 
-<div class="birthday" style="padding-top: 15px; padding-bottom: 15px; font: 9pt tahoma; color: #666;" dir="ltr" align="center">
-    <img src="~/Content/imgs/boy.png" /><br>
-    July 26th, 1987
+
+    @Html.RoyaOptionItem("user999",
+        "Mohammad Taghi Jahed",
+        new RouteModel("Profile", "Index", new { id = 999 }),
+        new RouteModel("../../Content/UserContents/User999_ProfilePicture.png", true))
 </div>

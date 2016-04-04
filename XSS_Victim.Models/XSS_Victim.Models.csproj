@@ -63,6 +63,8 @@
     <Compile Include="Repositories\ContactUsMessagesRepository.cs" />
     <Compile Include="Repositories\IRepositoryBase.cs" />
     <Compile Include="Repositories\MediaGalleryRepository.cs" />
+    <None Include="app.config" />
+    <None Include="packages.config" />
     <None Include="temp\OrdersRepository.cs" />
     <Compile Include="Repositories\PostsRepository.cs" />
     <None Include="temp\ProductsRepository.cs" />

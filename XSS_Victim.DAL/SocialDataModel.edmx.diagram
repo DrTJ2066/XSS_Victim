@@ -1,36 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="0b05d0cd4cce465e963165a270d6fd26" Name="Diagram1">
-        <EntityTypeShape EntityType="SocialDataModel.Cities" Width="1.5" PointX="5.25" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SocialDataModel.CompanyInfo" Width="1.5" PointX="2.75" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SocialDataModel.ContactUs" Width="1.5" PointX="4.75" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SocialDataModel.Countries" Width="1.5" PointX="0.75" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SocialDataModel.MediaAlbums" Width="1.5" PointX="0.75" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="SocialDataModel.MediaGallery" Width="1.5" PointX="3" PointY="7" IsExpanded="true" />
-        <EntityTypeShape EntityType="SocialDataModel.MediaTypes" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SocialDataModel.PostContentFragments" Width="1.5" PointX="14" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SocialDataModel.Posts" Width="1.5" PointX="11.75" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="SocialDataModel.Provinces" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="SocialDataModel.SitePageFragments" Width="1.5" PointX="13" PointY="8.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="SocialDataModel.SitePages" Width="1.5" PointX="10.75" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="SocialDataModel.SliderImages" Width="1.5" PointX="8" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="SocialDataModel.Sliders" Width="1.5" PointX="5.75" PointY="8.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SocialDataModel.sysdiagrams" Width="1.5" PointX="11.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="SocialDataModel.Users" Width="1.5" PointX="7.5" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="SocialDataModel.webpages_Membership" Width="1.5" PointX="9.75" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="SocialDataModel.webpages_Roles" Width="1.5" PointX="9.75" PointY="5.125" IsExpanded="true" />
-        <AssociationConnector Association="SocialDataModel.FK_Cities_Provinces" ManuallyRouted="false" />
-        <AssociationConnector Association="SocialDataModel.FK_Users_Cities" ManuallyRouted="false" />
-        <AssociationConnector Association="SocialDataModel.FK_Provinces_Countries" ManuallyRouted="false" />
+      <Diagram DiagramId="f641b37f37204191b6668d0c211051aa" Name="Diagram1">
+        <EntityTypeShape EntityType="SocialDataModel.CompanyInfo" Width="1.5" PointX="7.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialDataModel.ContactUs" Width="1.5" PointX="9.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialDataModel.MediaAlbums" Width="1.5" PointX="5.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialDataModel.MediaGallery" Width="1.5" PointX="8" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialDataModel.MediaTypes" Width="1.5" PointX="5.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialDataModel.PostContentFragments" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialDataModel.Posts" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialDataModel.SitePageFragments" Width="1.5" PointX="10" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialDataModel.SitePages" Width="1.5" PointX="7.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialDataModel.sysdiagrams" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialDataModel.Users" Width="1.5" PointX="0.75" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialDataModel.webpages_Membership" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="SocialDataModel.webpages_Roles" Width="1.5" PointX="3" PointY="8.625" IsExpanded="true" />
         <AssociationConnector Association="SocialDataModel.FK_MediaGallery_MediaAlbums" ManuallyRouted="false" />
         <AssociationConnector Association="SocialDataModel.FK_MediaGallery_MediaTypes" ManuallyRouted="false" />
         <AssociationConnector Association="SocialDataModel.FK_PostContentFragments_Posts" ManuallyRouted="false" />
+        <AssociationConnector Association="SocialDataModel.FK_Posts_Users" ManuallyRouted="false" />
         <AssociationConnector Association="SocialDataModel.FK_SitePageFragments_SitePages" ManuallyRouted="false" />
-        <AssociationConnector Association="SocialDataModel.FK_SliderImages_Sliders" ManuallyRouted="false" />
         <AssociationConnector Association="SocialDataModel.FK_webpages_Membership_Users" ManuallyRouted="false" />
         <AssociationConnector Association="SocialDataModel.webpages_UsersInRoles" ManuallyRouted="false" />
       </Diagram>

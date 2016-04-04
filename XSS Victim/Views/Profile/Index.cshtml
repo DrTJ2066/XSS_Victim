@@ -1,0 +1,34 @@
+﻿@model XSS_Victim.DAL.Users
+@using XSS_Victim.DAL
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutUserProfile.cshtml";
+    var postItems = ViewBag.PostItems as List<XSS_Victim.DAL.Posts> ?? new List<XSS_Victim.DAL.Posts>();
+}
+
+<div id="container">
+    <div class="timeline_container">
+        <div class="timeline">
+        </div>
+    </div>
+    @foreach (var item in postItems)
+    {
+        Html.RenderPartial("PostItemPartialView", item);
+    }
+
+    @{
+        Html.RenderPartial("PostItemPartialView",
+            new XSS_Victim.DAL.Posts()
+            {
+                Users = new Users() { UserFullName = "Dr TJ" },
+                PostContent = "This is a new post! This is a new post! This is a new post! This is a new post! This is a new post! This is a new post!",
+                PublishDateTime = DateTime.Now
+            });
+    }
+
+</div>
+
+<div class="birthday" style="padding-top: 15px; padding-bottom: 15px; font: 9pt tahoma; color: #666;" dir="ltr" align="center">
+    <img src="~/Content/imgs/boy.png"/><br>
+    @String.Format("{0:MMMM dd, yyyy}", Model.BirthDate)
+</div>

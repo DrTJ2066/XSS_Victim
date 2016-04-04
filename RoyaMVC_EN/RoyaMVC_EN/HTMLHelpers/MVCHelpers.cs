@@ -49,17 +49,8 @@ namespace RoyaMVC_EN.HTMLHelpers
         }
 
 
-        public static MvcHtmlString RoyaPersianDatePicker(this HtmlHelper html, string name, string initValue) {
-            return RoyaPersianDatePickerTag.RoyaPersianDatePicker(name, initValue);
-        }
 
-        public static MvcHtmlString RoyaPersianDatePicker(this HtmlHelper html, string name, string initDay, int initMonth, string initYear) {
-            return RoyaPersianDatePickerTag.RoyaPersianDatePicker(name, initDay, initMonth, initYear);
-        }
-
-
-
-
+        
         public static MvcHtmlString RoyaOptionItem(this HtmlHelper html, string name, string title, Models.RouteModel linkURL, Models.RouteModel imageURL, RoyaMVC_EN.Models.RoyaOptionNotification notificationData = null) {
             return RoyaOptionItem(html, name, title, linkURL, imageURL, title, null, null, OptionAppearance.OptionItem, "", null, notificationData);
         }

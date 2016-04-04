@@ -24,17 +24,19 @@ namespace XSS_Victim.Models.Repositories
     {
         public PostsRepository() : base() { }
 
-        public List<DAL.Posts> GetPosts(int count = 0)
+        public List<DAL.Posts> GetPosts(int userId, int count = 0)
         {
+            var res = this.Context.Posts.Where(w => w.UserID == userId);
+
             if (count == 0)
             {
-                return this.Context.Posts.ToList();
+                return res.ToList();
             }
 
-            var itemsCount = this.Context.Posts.Count();
+            var itemsCount = res.Count();
             count = itemsCount >= count ? count : itemsCount;
 
-            return this.Context.Posts.Take(count).ToList();
+            return res.Take(count).ToList();
         }
     }
 }

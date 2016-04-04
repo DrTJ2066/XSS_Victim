@@ -1,11 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Web;
-
+﻿﻿//-----------------------------------------------------------------------
+// <copyright file="RepositoryBase.cs" company="Processa"> 
+// Copyright (c) 2016 Todos los derechos reservados.
+// </copyright>
+// <author>mtaghi</author>
+// <date>3/30/2016 6:47:18 PM</date>
+//-----------------------------------------------------------------------
 namespace XSS_Victim.Models.Repositories
 {
+    #region using
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Web;
+    using XSS_Victim.DAL;
+    #endregion
+
     public class RepositoryBase : IRepositoryBase<DAL.SocialDataEntities>, IDisposable
     {
         public DAL.SocialDataEntities Context { get; set; }

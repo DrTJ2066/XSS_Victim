@@ -5,8 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using RoyaMVC_EN.Models.Repositories;
 using RoyaMVC_EN.Repositories;
-using System.Data.Objects;
 using RoyaMVC_EN.Models;
+using System.Data.Entity.Core.Objects;
 
 namespace RoyaMVC_EN.Controllers
 {

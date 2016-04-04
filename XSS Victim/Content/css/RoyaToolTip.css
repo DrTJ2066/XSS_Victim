@@ -1,0 +1,81 @@
+﻿.RoyaUpTooltip, .RoyaDownTooltip
+{
+    position: relative;
+    
+}
+
+.RoyaUpTooltip:after,.RoyaDownTooltip:after,
+.RoyaUpTooltip:before,.RoyaDownTooltip:before
+{
+    transition: all 0.2s linear 0s;
+} 
+
+.RoyaUpTooltip:hover:after,.RoyaDownTooltip:hover:after, 
+.RoyaUpTooltip:active:after,.RoyaDownTooltip:active:after,
+.RoyaUpTooltip:focus:after, .RoyaDownTooltip:focus:after
+{
+    border: none;
+    content: attr(tooltip);
+    position: absolute;
+    display: block;
+    width: auto;
+    white-space: nowrap;
+    background-color: rgba(51,51,51,0.98);
+    color: #fff;
+    padding: 5px 5px 5px 5px;
+    z-index: 5;
+    font-family: Tahoma;
+    font-size: 12px;
+    line-height: 25px;
+}
+
+.RoyaUpTooltip:hover:before,.RoyaDownTooltip:hover:before, 
+.RoyaUpTooltip:active:before,.RoyaDownTooltip:active:before,
+.RoyaUpTooltip:focus:before, .RoyaDownTooltip:focus:before
+{
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: 51;
+    border-right: 0.5em solid transparent;
+    border-left: 0.5em solid transparent;
+}
+
+/*-------------------------------------------------------------------------*/
+
+.RoyaUpTooltip:hover:after, 
+.RoyaUpTooltip:active:after, 
+.RoyaUpTooltip:focus:after
+{
+    top:-3.5em;
+    left: 25%;
+    margin-bottom: 2px;
+}
+
+.RoyaUpTooltip:hover:before, 
+.RoyaUpTooltip:active:before, 
+.RoyaUpTooltip:focus:before
+{
+    border-top: 0.5em solid rgba(51,51,51,0.95);
+    top: -0.5em;
+    left: 50%;
+}
+
+/*-------------------------------------------------------------------------*/
+.RoyaDownTooltip:hover:after, 
+.RoyaDownTooltip:active:after, 
+.RoyaDownTooltip:focus:after
+{
+    bottom:-3.2em;
+    left: 25%;
+    margin-top: 2px;
+}
+
+.RoyaDownTooltip:hover:before, 
+.RoyaDownTooltip:active:before, 
+.RoyaDownTooltip:focus:before
+{
+    bottom: -0.2em;
+    left: 40%;
+    border-bottom: 0.5em solid #333;
+}

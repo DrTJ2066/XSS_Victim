@@ -26,7 +26,7 @@ namespace XSS_Victim.Models.Repositories
         public DAL.ContactUs AddNewMessage(DAL.ContactUs newItem) {
             newItem.IDMessage = GetNewMessageID();
 
-            newItem.MessageDateTime = DateTime.Now;
+            newItem.MessageDateTimeGregorian = DateTime.Now;
             newItem.IsRead = false;
 
             this.Context.ContactUs.Add(newItem);
@@ -61,7 +61,7 @@ namespace XSS_Victim.Models.Repositories
             var message = this.Context.ContactUs.FirstOrDefault(w => w.IDMessage == id);
 
             if (message != null) {
-                this.Context.ContactUs.DeleteObject(message);
+                this.Context.ContactUs.Remove(message);
                 this.Context.SaveChanges();
             }
         }
